@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item</title>
+    <link href="//img.yihaodianimg.com/front-detail/global/css/global_site_base.css?2e115f3" rel="stylesheet" type="text/css"/>
+    <link href="//img.yihaodianimg.com/front-detail/detail/css/productDetail.css?2e115f3" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="./css/jqzoom.css">
+    <script src="../js/jquery.js"></script>
+    <script src="./js/jquery.jqzoom.js"></script>
+    <!--js start-->
+    <script type="text/javascript">
+        var URLPrefix = {
+            "shop": "//shop.yhd.com",
+            "busystock": "//gps.yhd.com",
+            "img": "//image.yihaodian.com",
+            "jd_item_stock": "//c0.3.cn/stock?extraParam=%7B%22originid%22:%221%22%7D&ch=1",
+            "h5HomeUrl": "//m.yhd.com",
+            "h5Search": "//search.m.yhd.com",
+            "shoping_pms": "//pms.yihaodian.com",
+            "h5Search": "//search.m.yhd.com",
+            "h5Search": "//search.m.yhd.com",
+            "search": "//search.yhd.com",
+            "jd_item_stocks": "//c0.3.cn/stocks?type=getstocks",
+            "detailDomain": "//item.yhd.com",
+            "jd_item_suit": "//c0.3.cn/recommend?methods=suitv2&count=6",
+            "commentZoneMall": "//e.1mall.com/front-pe",
+            "productDetailHost": "//www.yhd.com",
+            "central": "//www.yhd.com",
+            "search_list": "//search.yhd.com",
+            "h5pe_yhd": "//e.m.yhd.com",
+            "cartDomain": "//cart.yhd.com",
+            "centralShop": "//shop.yhd.com",
+            "shoping_my_statics": "//static.yihaodian.com/statics",
+            "shoping_search": "//search.yhd.com:80",
+            "homeUrl": "//www.yhd.com",
+            "shoping_central": "//www.yhd.com",
+//            "search_keyword": "//search.yhd.com",
+            "sitedomainmall": ".1mall.com",
+            "products_stock": "//gps.yhd.com/busystock",
+//            "commentZoneYhd": "//e.yhd.com/front-pe",
+            "tuangou": "//www.yhd.com/tuangou/index.do",
+            "centralImgDomain": ".yihaodianimg.com",
+            "statics": "//img.yihaodianimg.com/front-detail",
+            "mobile": "http://m.yhd.com",
+            "cms": "//cms.yhd.com",
+            "pms": "//pms.yhd.com",
+            "my_statics": "//static.yihaodian.com/member",
+            "passportmall": "https://passport.1mall.com",
+            "pe_yhd": "//item.yhd.com",
+            "shoping_shop": "//shop.yhd.com",
+            "h5DetaiDomain": "//item.m.yhd.com",
+            "sitedomain": ".yhd.com",
+            "tryUrl": "//try.yhd.com",
+            "shoping_self": "//www.yhd.com",
+            "tracker": "tracker.yhd.com",
+            "footFriendLink": "//www.yhd.com/friendlink/index.do",
+            "shoping_passport": "https://passport.yhd.com",
+            "uploadPostUrl": "//upload.yihaodian.com/upload/UploadAction",
+            "shoping_my": "//my.yhd.com",
+            "shoping_opposite": "//www.1mall.com",
+            "env": "PRODUCTION",
+            "my": "//my.yhd.com",
+            "mymall": "//my.1mall.com",
+            "selfroot": "//www.yhd.com",
+            "item": "//item.yhd.com/",
+            "jd_item_yanbao": "//cd.jd.com/yanbao/v3",
+            "productDetailUrl": "//www.yhd.com",
+            "passport": "https://passport.yhd.com",
+            "mall": "//www.1mall.com"
+        };
+        var headerType = "base";
+        var imagePath = "//img.yihaodianimg.com/front-detail/global/images";
+        var currSiteId = 1;
+        var currSiteType = 1;
+        var globalEnv = "PRODUCTION";
+        var siteStyle = 1;
+        var siteFlag = 0;
+        var isIndex = 0;
+        var indexFlag = 0;
+        var currProvinceId = 1;
+        var currVersionNum = "2e115f3";
+        var lazyLoadImageObjArry = lazyLoadImageObjArry || [];
+        var isFixTopNav = false;
+        (function (flag) {
+            if (flag) {
+                window.globalPrismFlag = '1';
+                window.globalPrismFeedbackURL = '//cms.yhd.com/cms/view.do?topicId=43';
+                window.globalPrismQRName = '';
+                window.globalPrismQRTitle = '手机购物更优惠';
+                window.globalPrismQRPng = '//img.yihaodianimg.com/front-homepage/index/images/qryhd.png';
+                window.globalPrismMemberLink = '//home.yhd.com/myyhdindex/index.do';
+                window.globalPrismCartLink = '//cart.yhd.com/cart/cart.do';
+                window.globalPrismCouponLink = '//coupon.yhd.com/myCoupon';
+            }
+        })(true);
+        <!--增加一个开关来控制是否显示搜索框下拉,为时才不调用-->
+        <!--搜索热词开关-->
+        <!--用于控制宽窄屏属性-->
+    </script>
+    <!--js end-->
+
+    <script>
+        $(function () {
+            $('.hideBox b').mouseenter(function () {
+//                alert($('.hideBox b .detail_main_pic_class').src);
+               $(this).addClass('cur').siblings().removeClass('cur');
+               var imgsrc = $(this).find('img').attr('src');
+                $('.proImg_border .proImg img').attr('src',imgsrc);
+            })
+
+        })
+
+
+    </script>
+
+
+
+
+</head>
+<body id="comParamId" data-param="{&quot;globalPageCode&quot;:&quot;-1&quot;,&quot;currPageId&quot;:&quot;0&quot;}" class="w980">
+<div class="hd_header_wrap">
+
+    <!-- top_bar -->
+    <div class="hd_top_bar">
+        <div class="wrap clearfix">
+            <a href="" class="hd_topbar_home">
+                <i class="hd_iconfont"></i>
+                <span>1号店首页</span>
+            </a>
+            <div class="hd_topbar_right">
+                <ul>
+                    <li id="global_unlogin" style="display: none;">
+                        <div class="hd_unlogin">
+                            <span class="hd_hi">Hi,请</span>
+                            <a href="" class="hd_login_link">登录&nbsp;</a>
+                            <a href="" class="hd_regist_link">&nbsp;注册</a>
+                        </div>
+                    </li>
+                    <li id="global_login" class="hd_has_child" style="" data-type="2017">
+                        <div class="hd_login">
+                            <span class="hd_hi">Hi,</span>
+                            <a href="" target="_blank" class="hd_login_name">1815*****77@phone</a>
+                            <i class="hd_iconfont"></i>
+                        </div>
+                        <div class="hd_user_privilege"><a href="javascript:bothSiteLogoutJsonp();" class="hd_login_out">退出登录</a>
+                            <div class="clearfix"><a href="" class="hd_avata_box"><img
+                                    src="//d9.yihaodianimg.com/N10/M00/2F/59/ChEi21iJ3ayAHRRxAACBZMCLZII10800.jpg"
+                                    alt=""></a>
+                                <div class="fl"><a href="" title="用户名" class="hd_login_name">1815*****77@phone</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hd_menu hd_notice" id="hdUserMsg" style="display: none" data-cfg="1">
+                            <a href="" rel="nofollow" target="_blank">我的消息&nbsp;(<em class="hd_has_num">0</em>)</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hd_menu">
+                            <a href="" target="_blank" rel="nofollow"><i
+                                    class="hd_iconfont"></i>我的订单</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- top_main -->
+    <div class="wrap hd_header hd_cm_global">
+        <div class="clearfix">
+            <div class="hd_logo_area">
+                <a href="" class="hd_logo"><img
+                        src="//d9.yihaodianimg.com/N10/M0A/DB/61/ChEi2lj4TqGAOjXwAAAbSq83IXA88700.png"
+                        alt="基础头部logo"></a>
+            </div>
+            <div class="hd_header_right">
+                <div class="clearfix">
+                    <div class="hd_head_search">
+                        <div class="hd_search_form" id="hdSearchForm">
+                            <div class="hd_fixed_wrap">
+                                <a href="" class="hd_fixed_logo"><img src="//d7.yihaodianimg.com/N09/M09/85/8D/ChEi11jziUSAOkn4AABJ2dwtrSw01400.jpg" alt="" width="205" height="70"></a>
+                                <div class="hd_search_wrap clearfix">
+                                    <label for="keyword" style="display:none;">办公室零食趴</label>
+                                    <input class="hd_search_ipt" name="keyword" id="keyword" type="text" value="" placeholder="办公室零食趴" original="办公室零食趴" url="//sale.yhd.com/act/u5tlWf4EQi1.html" style="color:#333333;" maxlength="100" autocomplete="off" x-webkit-speech="" onwebkitspeechchange="emptySearchBar();" x-webkit-grammar="builtin:translate">
+                                    <button type="button" class="hd_search_btn" onclick="javascript:searchMeForClick();"><i class="hd_iconfont"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="hotKeywordsShow" class="hd_hot_search" ><a title="电视柜茶几" target="_blank" href="">电视柜茶几</a>
+                        </p>
+                        <!--搜索推荐-->
+                    </div>
+                    <div class="hd_mini_cart" id="miniCart" data-version="1">
+                        <u class="hd_c_num none" id="in_cart_num"></u>
+                        <a class="hd_prism_cart" href="" data-ref="YHD_TOP_MINICART">
+                            <em class="hd_iconfont"></em>
+                            <span>购物车</span>
+                        </a>
+                        <div class="hd_cart_show none" id="showMiniCartDetail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top_nav -->
+    <div class="hd_cm_wrap">
+        <div class="wrap">
+            <div class="hd_cm_nav clearfix" id="headerNav">
+                <div class="hd_cm_allsort_wrap" id="allSortbox">
+                    <a href="javascript:;" class="hd_cm_tit">所有商品分类<em class="hd_iconfont"></em></a>
+                    <div class="mod_hd_allsort">
+                        <ul class="hd_allsort hd_more_allsort" id="j_allsort">
+                            <li data-tpa="YHD_GLOBAl_HEADER_CATEGORY_1" data-mrt="1" categoryid="1741" index="1">
+                                <h3 class="hd_gray_bg">
+                                    <i class="hd_iconfont hd_floor_color1"></i>
+                                    <a title="全球进口" href="" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1741_910"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1741.1">全球进口</a>
+                                </h3>
+                                <div class="hd_show_sort hd_allsort1 clearfix global_loading" data-tpc="1">
+                                </div>
+                            </li>
+                            <li data-tpa="YHD_GLOBAl_HEADER_CATEGORY_2" data-mrt="1" categoryid="1621" index="2">
+                                <h3 class="hd_gray_bg">
+                                    <i class="hd_iconfont hd_floor_color1"></i>
+                                    <a title="食品饮料" href="" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_590"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.1">食品饮料</a> /
+                                    <a title="酒" href="" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_591"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.2">酒</a> /
+                                    <a title="生鲜" href="" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_592"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.3">生鲜</a>
+                                </h3>
+                                <div class="hd_show_sort hd_allsort1 clearfix global_loading" data-tpc="2">
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="hd_cm_nav_wrap"></div>
+            </div>
+        </div>
+    </div>
+</div><!--content start-->
+
+<script>
+    var detailParams = {
+        skuId: '5064424',
+        isPop: 0,
+        availAttrbutes: [{"skuId": 5064424, "颜色": "量贩装40只（特惠）"}],
+        attributes: [{
+            "attributeName": "颜色",
+            "attributeAlias": "选择颜色",
+            "attributeValueVOList": [{
+                "attributePicUrl": "jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg",
+                "attributeValueName": "量贩装40只（特惠）"
+            }],
+            "attributeType": 2
+        }],
+//pName: '美乐佳 衣架 衣挂衣撑干湿两用晾晒衣服架（40支）',
+        brandId: '59596',
+//brandName: '美乐佳',
+        categoryIds: ["1620", "1624", "1660"],
+//categoryNames: '[家居家纺, 生活日用, 洗晒/熨烫]',
+        venderId: '0',
+        productKO: '',
+        spAttr: {
+            "LuxuryGoods": "0",
+            "isCartshield": "0",
+            "YuShouNoWay": "0",
+            "isKO": "0",
+            "isLOC": "0",
+            "isXnzt": "0",
+            "isEbay": "0",
+            "IsNewGoods": "1",
+            "YuShou": "0",
+            "isFlashPurchase": "0",
+            "isSupermarket": "0",
+            "isOverseaPurchase": "0",
+            "is7ToReturn": "1",
+            "fxyL": "1",
+            "HYKHSP": "0"
+        },
+        curDate: 1507898552256,
+        isBookVideo: 0
+    };
+</script>
+<div class="detail_wrap">
+    <!--面包屑-->
+    <div class="mod_detail_crumb clearfix">
+        <div class="crumb clearfix">
+            <a  target="_blank" href=""><em>家居家纺</em><i class="iconDetail"></i></a>
+            <a  target="_blank" href=""><em>生活日用</em><i class="iconDetail"></i></a>
+            <a  target="_blank" href="//search.yhd.com/c1660-0-0"><em>洗晒/熨烫</em><i class="iconDetail"></i></a>
+            <a  target="_blank" href=""><em>美乐佳</em><i class="iconDetail"></i></a>
+            <span><em title="美乐佳 衣架 衣挂衣撑干湿两用晾晒衣服架（40支）">美乐佳 衣架 衣挂衣撑干湿两用晾晒衣服架（40支）</em></span>
+        </div>
+    </div>
+    <!--第一屏-->
+    <div class="fm_detail_one clearfix">
+        <!--左侧主图区域-->
+        <div class="l">
+            <div class="mod_detail_preview clearfix" id="jsModDetailPreview">
+                <!--左侧主图区域-->
+                <!-- 大图 start -->
+                <div class="proImg_border">
+                    <div class="proImg">
+                        <img id="J_prodImg" width="360" height="360"
+                             original_src="jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg"
+                             src="//img14.360buyimg.com/n1/s360x360_jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg">
+                        <div class="zoomCursor" style="display: none; left: 180px; top: 83px;"></div>
+                        <div class="mask">
+                        </div>
+                    </div>
+                </div>
+                <!-- 大图 end -->
+                <!-- middle img list start -->
+                <div class="proCrumb clearfix" id="jsproCrumb">
+                    <a href="javascript:void(0);" class="cBtn prev iconDetail" title="上一个" style="display: block;"></a>
+                    <div class="hideBox">
+                        <div class="mBox clearfix">
+                            <b><img width="50" height="50" class="detail_main_pic_class"
+                                                original_src="jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg"
+                                                src="//img13.360buyimg.com/n1/s360x360_jfs/t5614/289/252699082/120248/e9cf9cb0/591e476aNc91e7703.jpg"></b>
+                            <b><img width="50" height="50" class="detail_main_pic_class"
+                                    original_src="jfs/t5605/202/1051234756/55893/ff3e1398/59239de2N3b0a1286.jpg"
+                                    src="//img13.360buyimg.com/n1/s360x360_jfs/t5605/184/233692613/329044/a125d17c/591e476dN3dc54f22.jpg"></b>
+                            <b><img width="50" height="50" class="detail_main_pic_class"
+                                    original_src="jfs/t5578/197/1060128993/79586/8001627/59239de4Nff7e486e.jpg"
+                                    src="//img13.360buyimg.com/n1/s360x360_jfs/t5575/173/238918331/460227/816b7510/591e476eNa3750d27.jpg"></b>
+                            <b><img width="50" height="50" class="detail_main_pic_class"
+                                    original_src="jfs/t5668/78/1074091201/173897/2156d21c/59239de1Na898b727.jpg"
+                                    src="//img13.360buyimg.com/n1/s360x360_jfs/t5857/68/246047170/352365/456beefe/591e4778N0f1b3cb1.jpg"></b>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" class="cBtn next iconDetail" title="下一个" style="display: block;"></a>
+                </div>
+                <div class="J_zoom" id="J_zoom" style="display: none;"><img id="sub600600PicURL" width="600"
+                                                                            height="600"
+                                                                            original_src="jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg"
+                                                                            alt=""
+                                                                            src="//img14.360buyimg.com/n1/s600x600_jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg"
+                                                                            style="left: -50px; top: -59.2857px;"></div>
+                <!-- middle img list end -->
+            </div>
+            <!-- btm start -->
+            <div class="product_rel clearfix">
+                <div class="prod_l">
+                    <p class="product_id" id="pro_code"><span>商品编号</span>5064424</p>
+                </div>
+                <p class="product_share" id="product_share" clstag="pageclick|keycount|product_201709214|8">
+                    <a class="share_tit" href="javascript:void(0);"><em class="iconDetail"></em>分享<i class="iconDetail"></i></a>
+
+                </p>
+            </div>
+            <!-- btm end -->
+        </div>
+        <div class="main_content">
+            <div class="detail_information" id="jsModInformation">
+                <div class="mod_detailInfo_proName" id="detail_sku_main">
+                    <h1 class="mh" id="productMainName">美乐佳 衣架 衣挂衣撑干湿两用晾晒衣服架（40支）</h1>
+                </div>
+                <div class="mod_detailInfo_priceSales ">
+                    <div class="seckill_box clearfix none" id="oneRobBuyBanner">
+                        <a href="javascript:void(0);" target="_blank" class="logo_enter seckill_enter">1号抢购</a>
+                        <span class="start_time none" id="oneRobBuyStartTime"></span>
+                        <div class="countdown_box none" id="oneRobBuyContDown"></div>
+                    </div>
+                    <div class="price pb0" id="currentPriceArea">
+                        <ul class="clearfix">
+                            <li class="tag" id="price_lable">
+                                价格
+                            </li>
+                            <li class="number inte_check">
+                                <span id="current_price">¥29.90</span>
+                            </li>
+                            <li class="pricing" id="bookprice"></li>
+                        </ul>
+                    </div>
+                    <ul class="Msgsales clearfix" id="msgsales">
+                        <li id="skuGoodCommentRate">
+<span class="hpl paise" style="">
+<a class="pl" onclick="detailPeExperience.forwardPL('p');" href="#sppj">
+<span class="iconDetail"></span>好评率<strong class="rate">95%</strong>
+</a>
+</span>
+                            <span class="pl paise_num" style="">
+<a class="pl" onclick="detailPeExperience.forwardPL('p');" href="#sppj">[评论<span class="yellow">1200+</span>条]</a>
+</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mod_detailInfo_promotion" id="detailPromotion"
+                     clstag="pageclick|keycount|product_201709214|6" style="display: block;">
+                    <div class="promotionLayer" id="promotion_index_1" style="display:none;">
+                        <div class="title clearfix"><i class="close" promotion_name="promotion_index_1">关闭</i>
+                            <div class="msg"><span class="sub">限制</span>共<span class="yow">1</span>项，限制信息</div>
+                        </div>
+                        <div class="Layer_main">
+                            <ul class="reduce">
+                                <li><span
+                                        style="max-width: 360px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;line-height: 1;"
+                                        title="此价格不与套装优惠同时享受">此价格不与套装优惠同时享受</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="promotionLayer" id="promotion_index_2" style="display:none;">
+                        <div class="title clearfix"><i class="close" promotion_name="promotion_index_2">关闭</i>
+                            <div class="msg"><span class="sub">满减</span>共<span class="yow">1</span>项，满减信息</div>
+                        </div>
+                        <div class="Layer_main">
+                            <ul class="reduce">
+                                <li><span
+                                        style="max-width: 360px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;line-height: 1;"
+                                        title="满199元减100元，满399元减200元">满199元减100元，满399元减200元</span><a target="_blank"
+                                                                                                     href="//search.yhd.com/p/pt204708623-pl1"
+                                                                                                     class="link">立即参加</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <dl class="clearfix">
+                        <dt>促销</dt>
+                        <dd id="promotion_title">
+                            <div class="list clearfix"><a href="javascript:void(0);" class="fr"
+                                                          promotion_name="promotion_index_1">共<span class="yow">1</span>项，展开查看<span
+                                    class="iconDetail"></span></a>
+                                <div class="fl"><span class="sub">限制</span><span class="tit" title="此价格不与套装优惠同时享受">此价格不与套装优惠同时享受</span>
+                                </div>
+                            </div>
+                            <div class="list clearfix"><a href="javascript:void(0);" class="fr"
+                                                          promotion_name="promotion_index_2">共<span class="yow">1</span>项，展开查看<span
+                                    class="iconDetail"></span></a>
+                                <div class="fl"><span class="sub">满减</span><span class="tit"
+                                                                                 title="满199元减100元，满399元减200元">满199元减100元，满399元减200元</span><a
+                                        target="_blank" class="link" href="//search.yhd.com/p/pt204708623-pl1">立即参加</a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="sku_unit" class="mod_detailInfo_tags warranty_box" style="padding-top: 10px;">
+                    <div id="choose" class="clearfix p-choose-wrap"
+                         style="border-top:none;padding-top:0px;margin-top:0px;margin-bottom:5px;">
+                        <div id="choose-attrs">
+                            <div id="choose-attr-1" class="li p-choose" data-type="颜色" data-idx="0">
+                                <div class="dt">选择颜色：</div>
+                                <div class="dd">
+                                    <div class="item selected" data-value="量贩装40只（特惠）" title="量贩装40只（特惠）">
+                                        <b></b>
+                                        <a href="#none">
+                                            <img class="detail_serial_product_pic_class" data-img="1"
+                                                 original_src="jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg"
+                                                 width="30" height="30"
+                                                 src="//img14.360buyimg.com/n1/s30x30_jfs/t5722/260/3584443807/122123/c99c765d/593fafecN4933e385.jpg">
+                                            <i>量贩装40只（特惠）</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod_choise_kit" id="firstScreenCombine" style="display:none;">
+                    </div>
+                </div>
+                <!--区域选择-->
+                <div class="mod_detailInfo_addressbox mod_address" id="detaiThreeAreas">
+                    <p class="errbox_txt" style="display:none;">请选择您要的商品信息 </p>
+                    <dl class="addressbox clearfix" id="detaiThreeAreasDl">
+                        <dt id="haigou-area-wuliu">送货至</dt>
+                        <dd>
+                            <div class="add_01 myYhd clearfix">
+                                <div class="mod_selectbox clearfix" clstag="pageclick|keycount|product_201709214|9">
+                                    <div class="input_btn" id="area_name"><span class="value">北京密云区城区</span><i
+                                            class="iconDetail"></i><span class="lion"></span></div>
+                                    <div class="selectlist" style="display: none;">
+                                        <ul class="tablist clearfix">
+                                            <li class="tab_01" tag-index="1" id="tabs_province" data-id="1">北京</li>
+                                            <li class="tab_02" tag-index="2" id="tabs_city" data-id="2816">密云区</li>
+                                            <li class="tab_03 cur" tag-index="3" id="tabs_county" data-id="6667">城区</li>
+                                            <li class="tab_04" tag-index="4" id="tabs_town" data-id="0"
+                                                style="display: none;"><i></i></li>
+                                        </ul>
+                                        <div class="sec_childs">
+                                            <div class="sec_level sec_level1 clearfix" tag-index="1"
+                                                 style="display: none;">
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">华北</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item cur" href="javascript:void(0);" data-id="1">北京</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="3">天津</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="5">河北</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="6">山西</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="11">内蒙古</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">华东</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="2">上海</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="12">江苏</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="15">浙江</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="14">安徽</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="16">福建</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="13">山东</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">华南</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="19">广东</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="20">广西</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="23">海南</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">华中</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="21">江西</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="7">河南</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="17">湖北</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="18">湖南</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">西南</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="4">重庆</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="22">四川</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="24">贵州</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="25">云南</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="26">西藏</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">西北</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="27">陕西</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="28">甘肃</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="29">青海</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="30">宁夏</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="31">新疆</a>
+                                                    </div>
+                                                </div>
+                                                <div class="arealist clearfix">
+                                                    <div class="dt">东北</div>
+                                                    <div class="dd">
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="8">辽宁</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="9">吉林</a>
+                                                        <a class="sec_item" href="javascript:void(0);"
+                                                           data-id="10">黑龙江</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sec_level sec_level2 clearfix" tag-index="2"
+                                                 id="mod_address_city" style="display: none;"><a class="sec_item cur"
+                                                                                                 data-id="2816">密云区</a>
+                                                <a class="sec_item" data-id="72">朝阳区</a>
+                                                <a class="sec_item" data-id="2901">昌平区</a>
+                                                <a class="sec_item" data-id="2953">平谷区</a>
+                                                <a class="sec_item" data-id="2800">海淀区</a>
+                                                <a class="sec_item" data-id="2801">西城区</a>
+                                                <a class="sec_item" data-id="2802">东城区</a>
+                                                <a class="sec_item" data-id="2803">崇文区</a>
+                                                <a class="sec_item" data-id="2804">宣武区</a>
+                                                <a class="sec_item" data-id="2805">丰台区</a>
+                                                <a class="sec_item" data-id="2806">石景山区</a>
+                                                <a class="sec_item" data-id="2807">门头沟</a>
+                                                <a class="sec_item" data-id="2808">房山区</a>
+                                                <a class="sec_item" data-id="2809">通州区</a>
+                                                <a class="sec_item" data-id="3065">延庆县</a>
+                                                <a class="sec_item" data-id="2810">大兴区</a>
+                                                <a class="sec_item" data-id="2812">顺义区</a>
+                                                <a class="sec_item" data-id="2814">怀柔区</a>
+                                            </div>
+                                            <div class="sec_level sec_level3 clearfix" tag-index="3"
+                                                 id="mod_address_county" style="display: block;"><a class="sec_item cur"
+                                                                                                    data-id="6667">城区</a>
+                                                <a class="sec_item" data-id="2862">城区以外</a>
+                                            </div>
+                                            <div class="sec_level sec_level4 clearfix" tag-index="4"
+                                                 id="mod_address_town" style="display: none;">
+                                            </div>
+                                        </div>
+                                        <div class="selectclose"><a href="javascript:void(0);"></a></div>
+                                    </div>
+                                </div>
+                                <div class="area_info">
+                                    <p>
+                                        <span id="detailStockInfo"
+                                              title="有货，23:00前下单,预计明天(10月14日)送达,因近期安检要求提升，10月13日至10月31日期间，您的商品可能会出现配送时限延长，我们会全力加快为您服务，谢谢！. "><strong>有货</strong>，&nbsp;&nbsp;23:00前下单,预计<b>明天(10月14日)</b>送达,因近期安检要求提升，10月13日至10月31日期间，您的商品可能会出现配送时限延长，我们会全力加快为您服务，谢谢！. </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="add_02">由 &nbsp;1号店&nbsp; 发货,并提供售后服务. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支持&nbsp;&nbsp;&nbsp;<span
+                                    class="link" title="86元免基础运费(20kg内)">86元免基础运费(20kg内)</span>&nbsp;&nbsp;<span
+                                    class="link" title="支持送货上门后再收款，支持现金、POS机刷卡等方式">货到付款</span>&nbsp;&nbsp;<span
+                                    class="link" title="准时达">准时达</span>&nbsp;&nbsp;<span class="link" title="上午下单，下午送达">211限时达</span>
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="mod_cuputing clearfix" id="computingArea">
+                    <div class="clearfix">
+
+                        <div data-sel="num" class="computing_item" id="computing_item"
+                             clstag="pageclick|keycount|product_201709214|11">
+                            <div class="computing_num">
+                                <input type="text" data-max="199" data-min="1" class="num" value="1"
+                                       id="product_amount">
+                            </div>
+                            <div class="computing_act">
+                                <input type="button" class="add">
+                                <input type="button" class="no_reduce" id="jian">
+                            </div>
+                        </div>
+                        <script>
+                            $(function () {
+                                $('.add').click(function () {
+                                    var num = $('.num').val();
+                                    $('.num').val(num*1+1);
+                                    var s= $('.num').val();
+                                    if(s>1){
+                                       $('#jian').attr('class','reduce');
+                                    }else {
+                                        $('#jian').attr('class','no_reduce');
+                                    }
+                                });
+                                $('#jian').click(function () {
+                                    var num = $('.num').val();
+                                    $('.num').val(num*1-1);
+                                    var s= $('.num').val();
+                                    if(s<1){
+                                        $('.num').val(1);
+                                    }
+                                    if(s>1){
+                                        $('#jian').attr('class','reduce');
+                                    }else {
+                                        $('#jian').attr('class','no_reduce');
+                                    }
+                                });
+
+                            })
+
+                        </script>
+                        <div class="cartbox" id="BtnArea">
+                            <a clstag="pageclick|keycount|product_201709214|10" href="javascript:void(0);"
+                               class="buy_btn6 btn_init_class" rel="addCart" id="addCart" style=""
+                               btn_init_flag="1"><span>加入购物车</span></a>
+                            <a class="buy_btn3 btn_init_class" href="javascript:void(0);" style="display:none"
+                               id="sellOut"><span>已售完</span></a>
+                            <a class="buy_btn3 btn_init_class" href="javascript:void(0);" style="display:none"
+                               id="seriesBtn_arrivalNotice"><span>加入购物车</span></a>
+                        </div>
+                    </div>
+                    <div class="in_tips" id="limitNum" style="display:none"></div>
+                </div>
+                <div class="mod_favlist" id="noGoodscommand" style="display:none;" data-tpa="DATAIL_NO_GOODS_RECOMMAND"
+                     clstag="pageclick|keycount|product_201709214|18"></div>
+                <dl class="mod_detailInfor_ensure clearfix" id="serviceGuarantee">
+                    <dt>保障</dt>
+                    <dd class="clearfix">
+                        <div id="payServiceList">
+                            <a id="7dayReturnTag" href="javascript:void(0);" target="_blank" style="" title="支持7天无理由退货"><i
+                                    class="iconDetail"></i>支持7天无理由退货</a>
+                            <a href="javascript:void(0);" target="_blank" style="" title="正品保障"><i
+                                    class="iconDetail"></i>正品保障</a></div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="r" id="r_mod" style="">
+            <div class="mod_change" id="r_mod_change">
+                <div class="cha_t">看了还看<a  href="javascript:void(0);" id="r_cha_t"><span class="iconDetail"></span>换一批</a></div>
+                <ul class="cha_m" id="r_cha_m">
+                    <li data-needreflushtype="0" skuid="1592867721"><a class="chaImg" target="_blank"
+                                                                       href="//item.yhd.com/1592867721.html"><img
+                            src="//img11.360buyimg.com/n1/s120x120_jfs/t1672/202/121035624/83916/910d05ee/55753c85N3bf79f78.jpg"
+                            width="120" height="120"></a>
+                        <p class="cha_tit"><a target="_blank" title="加品惠 衣架干湿两用轻便衣架防滑挂衣服架晾晒衣架子 30支装 JX-0578 金色"
+                                              href="//item.yhd.com/1592867721.html">加品惠 衣架干湿两用轻便衣架防滑挂衣服架晾晒衣架子 30支装
+                            JX-0578 金色</a></p>
+                        <p class="cha_price"><a target="_blank" href="//item.yhd.com/1592867721.html">¥<span
+                                class="j_price">29.80</span></a></p></li>
+
+                </ul>
+            </div>
+        </div>
+    </div> <!--第二屏文描及其他框架-->
+    <div class="fm_detail_two laymt clearfix">
+        <div class="grid_4">
+            <div id="leftLazyLoad"></div>
+            <div id="detail_viewAndBuyRecomm" style="display: none;" class="mod_box mod_product_box">
+            </div>
+            <div id="detail_buyAndBuyRecomm" style="display: none" class="mod_box mod_product_box">
+            </div>
+        </div>
+        <div class="grid_18">
+            <div id="centerLazyLoad"></div>
+            <dl id="detail_hot10Recomm" class="recommnad explosion clearfix" style="display: none">
+            </dl>
+            <div class="des_fixed" id="J_fixedDes">
+                <div class="layout_wrap">
+                    <div class="des">
+                        <div class="des_search fl" >
+                            <div class="shopdsr clearfix">
+                                <p class="shopdsr_name">
+                                    <a href="javascript:void(0);" title="" id="detail_desc_shopname_fixed"
+                                       target="_blank"></a>
+                                </p>
+                                <p class="shopdsr_online self_support_enter">
+                                    <em class="selfSupportIcon"></em>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="des_tab">
+                            <li class="des_tabbox" id="detail_desc_tab_fixed">
+                                <a  tabindex="0" href="javascript:void(0);" class="tab cur" id="spjs_fixed">商品介绍</a>
+                                <a  tabindex="3" href="javascript:void(0);" class="tab"
+                                   id="sppj_fixed">评价<em>&nbsp;&nbsp;1200+</em></a>
+                                <a  tabindex="1" href="javascript:void(0);" class="tab" id="ggbz_fixed">规格及包装</a>
+                                <a  tabindex="2" href="javascript:void(0);" class="tab" id="shfw_fixed">售后服务</a>
+                            </li>
+                            <li class="des_act">
+                                <div class="des_buy">
+                                    <div class="btnbox">
+                                        <a  class="add_cart" style="" id="detail_desc_addCartBtn_fixed" href="javascript:void(0);"><span>加入购物车</span></a>
+                                    </div>
+                                    <div class="tab_buy_info">
+                                        <a href="javascript:void(0);" target="_blank">
+                                            <img src="">
+                                        </a>
+                                        <span class="tab_buy_tit">美乐佳 衣架 衣挂衣撑干湿两用晾晒衣服架（40支）</span>
+                                        <span class="tab_price"><em>¥</em>29.90</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+            $(function () {
+                $('.des_tab li a').click(function () {
+                   var c=$(this).index();
+//                   alert(c);
+                   $(this).addClass('cur').siblings('a').removeClass('cur');
+                   $(this).parent().parent().siblings('#detail_desc_content').children('#prodDescTabContent').find('.desitem').eq(c).css('display','block').siblings('.desitem').css('display','none');
+//                    $(this).parent().siblings('div').eq(c).siblings('div').hide();
+                })
+            })
+
+
+            </script>
+            <div id="product_desc_tab_div_mask"></div>
+            <div id="descLazyLoad"></div>
+            <div class="des" id="J_des">
+                <ul class="des_tab">
+                    <li class="des_tabbox" id="detail_desc_tab">
+                        <a  tabindex="0" href="javascript:void(0);" class="tab cur" id="spjs">商品介绍</a>
+                        <!--<a  tabindex="3" href="javascript:void(0);" class="tab" id="sppj">评价<em>&nbsp;&nbsp;800+</em></a>-->
+                        <a  tabindex="1" href="javascript:void(0);" class="tab" id="ggbz">规格及包装</a>
+                        <a  tabindex="2" href="javascript:void(0);" class="tab" id="shfw">售后服务</a>
+                    </li>
+                </ul>
+
+                <div class="descon" id="detail_desc_content">
+                    <div id="prodDescTabContent">
+                        <div tabindex="0" class="desitem" style="display: block;" id="prodDetailCotentDiv">
+                            <dl class="des_info clearfix">
+                                <dt>
+                                    规格参数
+                                    <a id="medica_record" class="medica_record" href="" target="_blank"></a>
+                                    <a clstag="pageclick|keycount|product_201709214|23" href="javascript:void(0)" onclick="detailProdDesc.onGuigeTabSwitchEvent();" class="s_standard_more">查看更多 »</a>
+                                </dt>
+                                <dd title="品牌：美乐佳">品牌：美乐佳</dd>
+                                <dd title="商品名称：美乐佳 衣架 带挂钩干湿两用多功能晾晒衣架衣挂衣撑衣服架（40支）">商品名称：美乐佳 衣架 带挂钩干湿两用多功能晾晒衣架衣挂衣撑衣服架（40支）</dd>
+                                <dd title="商品编号：5064448">商品编号：5064448</dd>
+                                <dd title="商品毛重：1.78kg">商品毛重：1.78kg</dd>
+                                <dd title="商品产地：上海">商品产地：上海</dd>
+                                <!-- 扩展属性 -->
+                            </dl>
+                            <!-- 文描区域 -->
+                            <div class="mod_des">
+                                <style>/*C-B*/
+
+                                .ssd-module-wrap {width: 750px; margin: 0 auto; position: relative; text-align: left; background-color: #ffffff; }
+                                .ssd-module-wrap .ssd-module,.ssd-module-wrap .ssd-module-heading{ width: 750px; position:relative; overflow: hidden;  }
+                                .ssd-module{background-repeat:no-repeat; background-position:left center; background-size:100% 100%;}
+                                .ssd-module .ssd-widget-pic,.ssd-module .ssd-widget-text,.ssd-module .ssd-widget-line,.ssd-module-wrap .ssd-widget-rectangle,.ssd-module-wrap .ssd-widget-circle,.ssd-module-wrap .ssd-widget-triangle,.ssd-module-wrap .ssd-widget-table{ position: absolute; overflow: hidden; }
+                                .ssd-module-wrap .ssd-widget-table th,.ssd-module-wrap .ssd-widget-table td{position:relative;}
+                                .ssd-module .ssd-widget-pic img{display: block; width:100%; height:100% }
+                                .ssd-module .ssd-widget-text{ position: absolute; overflow: hidden;}
+                                .ssd-module .ssd-widget-text span{display:block;overflow:hidden; width:100%;  height:100%; padding:0; margin: 0; word-break:break-all; word-wrap:break-word; white-space:normal;}
+                                .ssd-module .ssd-widget-link{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: transparent;z-index:100 }
+                                .ssd-module-wrap .ssd-widget-text{ line-height: 1.5; }
+                                .ssd-module-wrap .ssd-cell-text{position:absolute;top:0;left:0;right:0;width: 100%;height: 100%;overflow: auto;}
+                                .ssd-module-heading{background-repeat:no-repeat; background-position:left center; background-size:100% 100%; }
+                                .ssd-module-heading .ssd-module-heading-layout{display:inline-block;}
+                                .ssd-module-heading .ssd-widget-heading-ch{float: left;display: inline-block;margin-left: 15px; margin-right:6px; height: 100%;}
+                                .ssd-module-heading .ssd-widget-heading-en{float: left;display: inline-block;margin-left: 6px; margin-right:15px; height: 100%;}
+                                .ssd-module-wrap .ssd-widget-rectangle{box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+                                /*C-E*/.ssd-module-wrap .M14697582139261{height:687px; width:750px; background-color:#fcfbdb; background-image:url()}
+                                .ssd-module-wrap .W146976092395711{height:707px; border-radius:0px; width:750px; left:3px; z-index:1; top:-3px}
+                                .ssd-module-wrap .M146976186860329{height:44px; width:750px; background-color:transparent; background-image:url(//img30.360buyimg.com/sku/jfs/t2638/110/3766097038/20501/ca2c9ac9/579ae9b4N8d6d6571.jpg)}
+                                .ssd-module-wrap .W146976186860330{line-height:44px; height:44px; color:#ffffff; font-size:20px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .W146976186860431{line-height:44px; height:44px; color:#ffffff; font-size:18px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .M14951713174212{height:284px; width:750px; background-color:transparent; background-image:url()}
+                                .ssd-module-wrap .W14951713174212I0{height:320px; border-radius:0px; width:320px; left:9px; z-index:1; top:9px}
+                                .ssd-module-wrap .W14951713672863{letter-spacing:0px; width:200px; font-style:normal; background-color:transparent; font-weight:normal; z-index:2; line-height:1.5; height:239px; color:#000; font-size:20px; left:358px; font-family:microsoft yahei; text-decoration:none; top:49px}
+                                .ssd-module-wrap .W14951713941614{letter-spacing:0px; width:272px; font-style:normal; background-color:transparent; font-weight:normal; z-index:3; line-height:1.5; height:192px; color:#000; font-size:20px; left:460px; font-family:microsoft yahei; text-decoration:none; top:48px}
+                                .ssd-module-wrap .M146976788655668{height:44px; width:750px; background-color:transparent; background-image:url(//img30.360buyimg.com/sku/jfs/t2638/110/3766097038/20501/ca2c9ac9/579ae9b4N8d6d6571.jpg)}
+                                .ssd-module-wrap .W146976788655669{line-height:44px; height:44px; color:#ffffff; font-size:20px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .W146976788655670{line-height:44px; height:44px; color:#ffffff; font-size:18px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .M14951717872445{height:339px; width:750px; background-color:transparent; background-image:url()}
+                                .ssd-module-wrap .W14951717872445I0{height:337px; border-radius:0px; width:750px; left:-6px; z-index:1; top:8px}
+                                .ssd-module-wrap .M14951718919957{height:301px; width:750px; background-color:transparent; background-image:url()}
+                                .ssd-module-wrap .W14951718919957I0{height:288px; border-radius:0px; width:750px; left:5px; z-index:1; top:11px}
+                                .ssd-module-wrap .M14951718618326{height:262px; width:750px; background-color:transparent; background-image:url()}
+                                .ssd-module-wrap .W14951718618326I0{height:279px; border-radius:0px; width:750px; left:-11px; z-index:1; top:-12px}
+                                .ssd-module-wrap .M146976821356182{height:44px; width:750px; background-color:transparent; background-image:url(//img30.360buyimg.com/sku/jfs/t2638/110/3766097038/20501/ca2c9ac9/579ae9b4N8d6d6571.jpg)}
+                                .ssd-module-wrap .W146976821356183{line-height:44px; height:44px; color:#ffffff; font-size:20px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .W146976821356184{line-height:44px; height:44px; color:#ffffff; font-size:18px; font-style:normal; background-color:transparent; text-decoration:none; font-family:microsoft yahei; font-weight:normal}
+                                .ssd-module-wrap .M146976821637185{height:268px; width:750px; background-color:transparent; background-image:url()}
+                                .ssd-module-wrap .W146977132559513{height:241px; border-radius:0px; width:750px; left:0px; z-index:1; top:16px}
+                                </style><div class="desbox">
+                                <div align="center">
+                                    <img src="//img10.360buyimg.com/cms/jfs/t6109/332/1693127554/60507/53dcd07c/593570fdN8187545d.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img12.360buyimg.com/cms/jfs/t5626/268/2976795824/123487/c81ae0b7/59357100Na731f59f.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img10.360buyimg.com/cms/jfs/t5986/191/1766056225/85220/ec1a4710/593570f5N7e9c8741.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img11.360buyimg.com/cms/jfs/t6013/247/1679544145/101772/6b53ebc8/593570ffN549a5dc0.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img11.360buyimg.com/cms/jfs/t5875/155/2905293620/63625/64eda6fa/59357100Nb0911518.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img13.360buyimg.com/cms/jfs/t5902/233/1780301975/125207/2f32e6bf/5935710bNa83415ee.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img11.360buyimg.com/cms/jfs/t5731/55/2901512660/86059/5d6e6efd/59357108N699a5f76.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img13.360buyimg.com/cms/jfs/t5842/147/2908748077/96269/4d13a432/59357109N4e27fe31.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img12.360buyimg.com/cms/jfs/t6094/310/1708990799/168086/cecfd9d1/5935710bN0a783231.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                    <img src="//img13.360buyimg.com/cms/jfs/t5746/309/2930921878/78810/aa5e9603/59357109N42cd510b.jpg" alt="干湿两用衣架|浸塑衣架|多功能防滑衣架|京东自营衣架">
+                                    <br>
+                                </div></div>
+                            </div>
+                        </div>
+                        <!-- 规格及包装tab内容 -->
+                        <div tabindex="1" class="desitem desqoute" id="detail_desc_prop" style="display: none;">
+                            <dl class="standard">
+                                <dt>主体</dt>
+                                <dd><label>品牌</label>美乐佳</dd>
+                                <dd><label>商品个数</label>40</dd>
+                                <dd><label>类别</label>衣架</dd>
+                                <dd><label>材质</label>金属、PP等</dd>
+                                <dd><label>产品包装尺寸（cm）</label>42*23*15cm</dd>
+                                <dd><label>数量</label>40</dd>
+                                <dd><label>产品包装重量（kg）</label>1.78</dd>
+                                <dd><label>颜色</label>随机</dd>
+                                <dd><label>衣架/衣夹数量</label>40</dd>
+                                <dd><label>适用衣物</label>加粗通用型</dd>
+                            </dl>
+                            <p class="tit mt">包装清单</p><p class="con">干湿两用带钩多功能衣架 x 40</p>
+                        </div>
+                        <div tabindex="2" class="desitem desqoute" id="detail_desc_fwcl" style="display: none;">
+                            <p class="tit">1号店承诺</p>
+                            <p class="con">1号店平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！<br>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若没有及时更新，请大家谅解！</p>
+                            <p class="tit">全国联保</p>
+                            <p class="con">凭质保证书及1号店发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由1号店联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。1号店还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
+                            <p class="tit">权利声明</p>
+                            <p class="con">1号店上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是1号店重要的经营资源，未经许可，禁止非法转载使用。<br>注：本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。</p><p class="tit">价格说明</p>
+                            <p class="con"><strong>1号店价：</strong>商品在1号店平台上，不参加降价让利促销团购等活动时的常规销售价格。<br><strong>参考价：</strong>商品展示的参考价，可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价（如厂商指导价、建议零售价等）或该商品在1号店平台曾经展示过的销售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价、销售商门店曾经展示过的销售价等可能会与您购物时展示的不一致，该价格仅供您参考。<br><strong>问题反馈：</strong>如有疑问，建议您在购买前联系客服咨询。
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="clearfix" id="buyer_-experience">
+                <div id="productExperience" name="productExperience" class="tab"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+<div class="ft_wrap">
+    <div id="globalBottomBrowseRelated" data-recordtracker="1"></div>
+    <div class="wrap ft_footer_service clearfix" id="footerIcon" data-tpa="YHD_GLOBAl_FOOTERICON">
+        <a target="_blank">
+            <img alt="" src="//d8.yihaodianimg.com/N05/M0B/39/F3/CgQI0lWskgmADBnsAAAPZvcSh3E68900.jpg">
+            <b>正品保障</b>
+            <span>正品行货 放心选购</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d6.yihaodianimg.com/N05/M09/96/23/ChEbulWsk4iADa_aAAAM544hHN818600.jpg">
+            <b>满86包邮</b>
+            <span>满86元 免运费</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d9.yihaodianimg.com/N07/M00/2D/8B/CgQIz1WslI-Adao3AAAN5b_ut2I80100.jpg">
+            <b>售后无忧</b>
+            <span>7天无理由退货</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d8.yihaodianimg.com/N09/M06/08/C8/ChEi11WsyiyALBbiAAAN9lEEK5M33200.jpg">
+            <b>准时送达</b>
+            <span>收货时间由你做主</span>
+        </a>
+    </div>
+    <div class="wrap ft_service_link clearfix">
+        <div id="bottomHelpLinkId" class="ft_help_list clearfix" data-tpa="YHD_GLOBAl_FOOTER_HELP">
+            <dl>
+                <dt>新手入门</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=12" target="_blank">购物流程</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=17" target="_blank">会员制度</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=38" target="_blank">订单查询</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=36" target="_blank">发票制度</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=25" target="_blank">货到付款</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=26" target="_blank">网上支付</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=27" target="_blank">银行转账</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=28" target="_blank">礼品卡支付</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=29" target="_blank">其它支付</a></dd>
+            </dl>
+            <dl>
+                <dt>配送服务</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=21" target="_blank">配送进度查询</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=20" target="_blank">商品验货与签收</a></dd>
+            </dl>
+            <dl>
+                <dt>售后保障</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=31" target="_blank">退换货政策</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=43" target="_blank">联系客服</a></dd>
+            </dl>
+        </div>
+        <!--footer 二维码 begin -->
+        <div class="ft_code_wrap clearfix" data-tpa="YHD_GLOBAl_HEADER_MOBILE" id="footerQRcode">
+            <div class="ft_mobile_code clearfix">
+                <p>APP更优惠</p>
+                <img src="//img.yihaodianimg.com/front-homepage/index/images/qryhd.png?1=1" alt="APP更优惠二维码">
+            </div>
+            <div class="ft_mobile_code clearfix">
+                <p>加微信查订单</p>
+                <img src="//d6.yihaodianimg.com/N10/M01/EC/6D/ChEi3Fj518KAFF5SAABtGRNmQM062100.jpg" alt="加微信查订单二维码">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p class="ft_footer_link">
+        </p>
+        <p class="ft_footer_link">
+            <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备16050468号</a>
+            |
+            <a href="//cms.yhd.com/cms/view.do?topicId=16" target="_blank">经营证照</a>
+            |
+            <a href="//d9.yihaodianimg.com/N10/M05/00/A9/ChEi2lkQGRaAfaeeAAIhVwT2TYo18400.jpg" target="_blank">互联网药品信息服务资格证</a>
+            |
+            <a target="_blank">违法和不良信息举报电话：0514-85899118</a>
+            |
+            <a href="//d9.yihaodianimg.com/N11/M04/76/1C/ChEwoVnfFfeAfzKUAAg9urXNqaA12000.jpg" target="_blank">沪B2-20170039</a>
+        </p>
+        <p>Copyright© 1号店网上超市 2007-2017，All Rights Reserved</p>
+        <small id="footerbanner2LazyLoad" class="ft_pic_link">
+            <a href="https://online.unionpay.com/" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N00/M01/1A/30/CgMBmVDzwyaAaIMBAAAJZgSEr6I65200.jpg">
+            </a>
+            <a href="http://www.gsxt.gov.cn/index.html" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N01/M08/19/94/CgQCrlDzwnKAUkfSAAAIPrrML6M92400.jpg">
+            </a>
+            <a href="http://www.zx110.org/" target="_blank">
+                <img alt="" src="//d8.yihaodianimg.com/N02/M05/19/94/CgQCsVDzw0GABUElAADHlvRfNUk94600.jpg">
+            </a>
+            <a href="http://net.china.com.cn/index.htm" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N01/M0A/95/FD/CgQCr1PQy1CAF7vaAABDexsiEYM24800.jpg">
+            </a>
+            <a href="http://shwg.dianping.com/index.html" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N08/M06/6C/9C/ChEi1VcfPl2AC1T8AAANFrEfJlw97300.jpg">
+            </a>
+            <a href="http://www.shjbzx.cn" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N10/M09/0E/1F/ChEi2lh171KAJrGlAAALl_uZt0E75600.jpg">
+            </a>
+            <a href="https://search.szfw.org/cert/l/CX20150608010268010812" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N08/M01/C7/7E/ChEi1FYXHcOAVk_WAAAL2r2-yfo10200.jpg">
+            </a>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&amp;ct=df&amp;a=1&amp;pa=500267"
+               target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N01/M03/A0/40/CgQCrlPYTqCASlHXAAAd82JE0eA31000.png">
+            </a>
+        </small>
+    </div>
+</div>
+<!--js start-->
+<!--无页面级头部js时, 全局头部js下移-->
+<script type="text/javascript" src="../js/global_base_top.js"
+        charset="utf-8"></script>
+<script type="text/javascript" src="//img.yihaodianimg.com/front-detail/detail/js/productDetail.js?2e115f3"
+        charset="utf-8"></script>
+<script type="text/javascript" src="//st.360buyimg.com/sso/synccookie.js?2e115f3" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account', 'JA2017_111805']); //站点编号
+    jaq.push(['domain', 'yhd.com']); //站点域名
+    var extParams = encodeURI("skuId=5064424");
+    jaq.push(['extParams', extParams]);
+    (function () {
+        var ja = document.createElement('script');
+        ja.type = 'text/javascript';
+        ja.async = true;
+        ja.src = '//wl.jd.com/joya.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+<div id="prismWrap" class="yhd_prism_wrap">
+    <div class="yhd_prism_nav">
+        <div class="prism_top_ad">
+            <div class="prism_nav_tab" data-type="adv" id="prismTopAdv"></div>
+        </div>
+        <div class="prism_nav_center">
+            <div class="prism_nav_tab prism_icon_wrap" clstag="" data-type="icon" id="prismPerson"><a
+                    href="//home.yhd.com/myyhdindex/index.do" target="_blank"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text">个人中心</u></a></div>
+            <div class="prism_nav_tab prism_cart_wrap" clstag="pageclick|keycount|lengjing_201709227|2" data-type="cart"
+                 id="prismCart"><a class="prism_cart_tab" href="//cart.yhd.com/cart/cart.do" target="_blank"><em
+                    class="prism_iconfont"></em>
+                <div class="prism_cart_text">购物车</div>
+                <p id="prismCartNum" class="prism_cart_num none"><u></u></p></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|3" data-type="icon"
+                 id="prismCoupon"><a href="//coupon.yhd.com/myCoupon" target="_blank"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text">抵用券</u></a></div>
+        </div>
+        <div class="prism_nav_btm">
+            <div class="prism_nav_tab prism_icon_wrap" clstag="" data-type="icon" id="prismIm" style="display: none;"><a
+                    href="javascript:;"><span class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">咨询客服</u></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|5" data-type="icon"
+                 id="prismFeedback"><a href="//cms.yhd.com/cms/view.do?topicId=43" target="_blank"><span
+                    class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">用户反馈</u></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|6" data-type="icon"
+                 id="prismQRCode" style="display: block;"><a href="javascript:;"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text none">二维码</u></a>
+                <div class="prism_tips_wrap prism_yhd_code none"><p style="text-align:center;"><br>手机购物更优惠</p><img
+                        src="//img.yihaodianimg.com/front-homepage/index/images/qryhd.png"><em class="tips_arrow"></em>
+                </div>
+            </div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|7" data-type="icon"
+                 id="prismBacktop"><a href="javascript:;"><span class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">返回顶部</u></a></div>
+        </div>
+    </div>
+</div>
+<iframe id="globalLocalStorageAdaptorForGet" style="display:none"
+        src="http://www.yhd.com/html/getLocalStorage.html?v=20171013" loaded="1"></iframe>
+</body>
+</html>

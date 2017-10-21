@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html style="background:#fff">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>京东支付</title>
+    <link rel="icon" href="//static.360buyimg.com/finance/payment/receivable/1.2.0/css/i/ico.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//sp.jd.com/payment/1.2.0/css/bankList.css">
+    <script type="text/javascript" src="//static.360buyimg.com/finance/payment/receivable/1.1.0/js/lib/jquery-1.6.4-min.js"></script>
+    <script type="text/javascript" src="//static.360buyimg.com/finance/payment/receivable/1.1.0/js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="//static.360buyimg.com/finance/payment/receivable/1.2.0/css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="//static.360buyimg.com/finance/payment/receivable/1.1.0/css/main.css"> -->
+
+    <script>
+        //js全局变量
+        var globalVar={
+            bankCardIsChecked:true,//银行卡产品被选中
+            quickPayIsChecked:true,//快捷绑定银行卡
+            canBeSubmit:true,//是否可提交
+            isVaildCVV2:false,//是否需要验证cvv2
+            isSignPay:false,//签约支付
+            isUseBalance:false,//是否勾选余额支付
+            isUserBank:false,//是否勾选银行卡
+            isUseBaiTiao:false, //是否勾选白条
+            isUseBaiTiaoFQ:false, //是否勾选白条分期
+            isUseBaiTiaoOne:false, //是否勾选白条1期
+            isUseXJK:false,//是否勾选小金库
+            isUseXJKFin:false,//是否勾选小金库理财账户
+            isNetBank:false//是否勾选网银
+        }
+    </script>
+
+
+
+    <script type="text/javascript" src="/misc/js/jdpay/common.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/login.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/quickpay.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/addCard.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/payCashier.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/baitiao.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/baitiaoFQ.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/baitiaoOne.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/payxjk.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/payxjkFin.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/bridge.js?verson="></script>
+    <script type="text/javascript" src="/misc/js/jdpay/weixin.js?verson="></script>
+
+
+
+
+
+</head>
+<body class="yhd">
+<!-- shortcut -->
+<div class="p-header">
+    <div class="w clearfix">
+        <div id="logo" class="fl">
+            <a href="https://www.yhd.com"><img width="153" height="42" src="//static.360buyimg.com/finance/payment/receivable/1.2.0/css/i/logo-yhd.png" alt="一号店收银台"></a>
+        </div>
+        <div class="fr mt15">
+
+            <a href="javascript:login();" style="display: none;">[登录]</a>&nbsp;<a href="javascript:regist()" style="display: none;">[免费注册]</a>
+        </div>
+    </div>
+</div>
+<!-- shortcut end -->
+
+<script>
+    $(function(){
+        checkPayToolsState();
+
+        setCardSelectHide();
+        payBankcard.setBankSelect();
+
+
+        // 关闭全球购用户申报弹窗
+        paymentUI.hideModal('#userDeclareModal');
+    })
+
+</script>
+
+<input type="hidden" id="tradeNum" value="112901817101615191905347">
+<input type="hidden" id="orderId" value="1013150816716047050495">
+<input type="hidden" id="validKey" value="d9aaeafc01018ac70ab2654e9e04ad9a0f2931cbcf10a0687d70b915f026326038662a30a59a1452af43f79d91c0611d">
+<div class="main cravenOrder" style="background:#fff">
+    <div class="w">
+        <!-- order 订单信息 -->
+        <div class="order">
+            <div class="o-left">
+                <h3 class="o-title">1号店订单提交成功，请您尽快付款！</h3>
+                <p class="o-tips">
+                    订单信息：1号店
+                </p>
+
+                <p class="o-tips">
+                    请您在提交订单后<span class="font-red">6小时</span>内完成支付，否则订单会自动取消。
+                </p>
+            </div>
+            <div class="o-right">
+                <div class="o-price">
+                    <em>应付金额</em><strong>1064.00</strong><em>元</em>
+                </div>
+
+
+                <div class="o-detail"><a onclick="payOrder.toggleDetail(this);" href="javascript:;" id="a_orderDetail" psa="orderdetail">订单详情<i></i></a></div>
+
+            </div>
+            <span class="clr"></span>
+            <div class="o-list j_orderList">
+                <!-- 单笔订单 -->
+                <div class="o-list-info">
+                    <div class="o-list-info-item">收款方：1号店</div>
+                    <div class="o-list-info-item">订单信息：1号店</div>
+                    <div class="o-list-info-item">商户订单号： 112901817101615191905347</div>
+                    <!--
+        <div class="o-list-info-item">创建时间：2016-10-30 23:06:15</div>
+        -->
+                    <div class="o-list-info-item">创建时间：2017-10-16 15:19:20</div>
+
+                    <div class="o-list-info-item">交易号：1013150816716047050495</div>
+
+                </div>
+            </div>
+        </div>
+        <!-- order 订单信息 end -->
+        <script type='text/javascript'>
+            var _jaq = _jaq || [];
+            _jaq.push(['_setAccount', 'UA-JRPC-3Cashier']);
+            _jaq.push("orderInfo");
+            (function() {
+                var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+                ja.src ="//ag.jd.com/resource/psa-ag.js";
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ja, s);
+            })();
+        </script>
+
+        <div class="payment"></div>
+
+        <input type="hidden" id="otherPaymentType" value="login">
+        <!-- payment 支付方式选择 end -->
+        <div class="payment payment-other">
+            <!-- payment-change 变更支付方式 -->
+            <div class="payment-change">
+                <div class="o-icon-wrap">
+                    <span class="o-icon"></span>
+                    <!--<span class="o-p-tips">以下支付方式不支持合并支付</span>-->
+                </div>
+                <div class="pc-wrap clearfix">
+                    <div class="pc-w-left">
+                        <a class="pc-item-weixin" href="javascript:void(0);" onclick="otherPayment.weixinQRCode()"><i></i>微信支付</a>
+                        <span>|</span>
+                        <a class="pc-item-unionpay" href="javascript:void(0);" onclick="otherPayment.unionPay()"><i></i>银联在线支付<!--<i class="item-tips">优惠</i><i class="item-tips-content">6.2折优惠封顶30元</i>--></a>
+                        <!--<span>|</span> -->
+                        <!--<a class="pc-item-jdpay" href="javascript:;">京东钱包<i class="item-icon"></i><i class="item-tips">满减</i><i class="item-pop"><img src="http://img30.360buyimg.com/jr_image/jfs/t739/171/1460421305/3901/45d25f2a/553e3b8fN2cb8f383.png" width="100" height="100"><b>扫一扫，每日首单<br>满59元减5元</b></i></a> -->
+                        <!--<span>|</span> -->
+                        <!--<a class="disable" href="javascript:;">预付卡支付</a> -->
+                        <!--<span>|</span> -->
+                        <!--<a href="javascript:;">快钱</a> -->
+                        <!--<span>|</span> -->
+                        <!--<a href="javascript:;">信用卡分期</a> -->
+                        <!--<span>|</span> -->
+                        <!--<a href="javascript:;" avalon-events="click:eclick_0_64showNewForeignCard">外卡支付</a> -->
+                        <!-- <a href="javascript:;">企业账户</a><span>|</span><a href="javascript:;">京东钱包</a><span>|</span> -->
+                        <!--<a class="pc-w-prom">满59元立减，最高999元（每天限一单）</a>-->
+                        <!-- <span>|</span><a href="javascript:;">预付卡支付</a> -->
+                    </div>
+                    <!-- <a class="pc-w-right clearfix" href=""><em>包含微信支付、网银钱包、银联在线、企业转账、企业网银</em><i class="pc-w-arrow-right">&gt;</i></a> -->
+                </div>
+            </div>
+            <!-- payment-change 变更支付方式 end -->
+        </div>
+
+    </div>
+
+</div>
+
+<!-- app下载弹窗 -->
+<div id="downloadAppModal" class="ui-modal downloadApp-modal">
+    <div class="ui-modal-inner">
+        <!-- head -->
+        <div class="ui-modal-head">
+            <h3 class="um-h-title"></h3>
+            <a class="um-h-close"></a>
+        </div>
+        <!-- content -->
+        <div class="ui-modal-content clearfix">
+
+            <div class="dm-box dm-box-jd">
+                <div class="dm-b-title">扫码下载京东APP</div>
+                <div class="dm-b-qrcode">
+                    <img class="dm-b-qrcode-img" src="//img30.360buyimg.com/jr_image/jfs/t3988/18/495692012/19708/11cb03e1/58526b8aN3b67e2fa.png" alt="">
+                </div>
+                <div class="dm-b-ext">或者下载至电脑安装</div>
+                <div class="dm-b-download">
+                    <a class="dm-b-ios" href="//itunes.apple.com/cn/app/id414245413" target="_blank"></a>
+                    <a class="dm-b-android" href="//storage.jd.com/jdmobile/JDMALL-PC2.apk" target="_blank"></a>
+                </div>
+            </div>
+
+            <div class="dm-box dm-box-jr">
+                <div class="dm-b-title">扫码下载京东金融APP</div>
+                <div class="dm-b-qrcode">
+                    <img class="dm-b-qrcode-img" src="//img30.360buyimg.com/jr_image/jfs/t4090/264/497657698/14403/f494976b/58525fc8Na6d786d7.png" alt="">
+                </div>
+                <div class="dm-b-ext">或者下载至电脑安装</div>
+                <div class="dm-b-download">
+                    <a class="dm-b-ios" href="//itunes.apple.com/cn/app/jing-dong-jin-rong/id895682747?mt=8" target="_blank"></a>
+                    <a class="dm-b-android" href="//211.151.9.66/downapp/jrapp_jr322.apk" target="_blank"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- app下载弹窗 end -->
+
+
+<script type='text/javascript'>
+    var _jaq = _jaq || [];
+    _jaq.push(['_setAccount', 'UA-JRPC-3Cashier']);
+    _jaq.push("login");
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src ="//ag.jd.com/resource/psa-ag.js";
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+
+
+
+<!-- 一号店 footer -->
+<div class="p-footer" style="background:#fff">
+    <div class="pf-wrap w">
+        <div class="pf-line">
+            <div class="copyright">Copyright© 1号店网上超市 2007-2017， All Rights Reserved</div>
+        </div>
+    </div>
+</div>
+
+<!-- 问卷调查 -->
+<div class="feedback">
+    <a href='//ur.jr.jd.com/survey/show?id=153&u=login%3Fkey%3D112901817101615191905347_1013150816716047050495&no=110246516014,1013150816716047050495,null' target="_blank">&nbsp;</a>
+</div>
+
+<!--京东风控 需要放到所有js的最后-->
+<!-- 设备指纹 -->
+<script language="javaScript">
+    var orderId="";
+</script>
+<input type="hidden" name="deviceId" id="deviceId" value="" autocomplete="off"><input type="hidden" name="fingerprint" id="fingerprint" value="" autocomplete="off"><input type="hidden" name="udfp" id="udfp" value="" autocomplete="off">
+<!--风控js 最新-->
+<script src="//payrisk.jd.com/js/tdpay.js"></script>
+
+<script language="javaScript">
+    try{
+        getJdEid(function(eid,fp,udfp){
+            var orderId=$("#orderId").val();
+            $("#deviceId").val(eid);
+            $("#fingerprint").val(fp);
+            $("#udfp").val(JSON.stringify(udfp));
+        });
+    }catch(e){
+
+    }
+</script>
+
+</body>
+</html>

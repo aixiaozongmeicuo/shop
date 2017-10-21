@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--结算页面样式-->
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/trade/js/libs/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/bak/jdf/1.0.0/unit/base/5.0.0/base.js"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/bak/jdf/1.0.0/unit/basePatch/1.0.0/basePatch.js"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/bak/user/purchase/2.0.0/js/cookieTrack_v4.js"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/js/dialog.js"></script>
+
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/js/order.common.js?v=20a52be"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/trade/shopping/misc/js/jquery.checkout.js?v=20a52be"></script>
+
+    <!--yhd-->
+    <link type="text/css" rel="stylesheet" href="//img.yihaodianimg.com/trade/shopping/misc/bak/user/purchase/2.0.0/widget/common/common.css">
+    <link type="text/css" rel="stylesheet" href="//img.yihaodianimg.com/trade/shopping/misc/css/cartBase.css?v=20a52be">
+    <link type="text/css" rel="stylesheet" href="//img.yihaodianimg.com/trade/shopping/misc/css/base.css?v=20a52be">
+    <link type="text/css" rel="stylesheet" href="//img.yihaodianimg.com/trade/shopping/misc/css/style.css?v=20a52be">
+    <link type="text/css" rel="stylesheet" href="//img.yihaodianimg.com/trade/shopping/misc/css/dialogBox.css?v=20a52be">
+    <link href="//img.yihaodianimg.com/myyhd/global/css/global_site_base.css?0" rel="stylesheet" type="text/css"/>
+    <link href="//img.yihaodianimg.com/myyhd/member/css/address.css?0" rel="stylesheet" type="text/css"/>
+    <style>
+        .hide {
+            display: none;
+        }
+        .switch_tips_text {
+            text-align: center;
+        }
+        .delivery_rel_cont .deliv_items  .de_itm_infolist .del_il_box .dib_other_info ul li .odr_tips{  position: relative; clear: both;  display: block; /*! width: 190px; */  height: 28px; padding: 0px 6px; margin-top: 7px;     /*! margin-left: 83px; */ line-height: 28px; background-color: #fff7d1;  border: 1px solid #e5debc; color: #666;   -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; float: right;}
+        .delivery_rel_cont .deliv_items  .de_itm_prodlist .de_ib_box .dib_con ul .goods-suit-tit{ margin-bottom: 10px;}
+        .delivery_rel_cont .deliv_items  .de_itm_prodlist .de_ib_box .dib_con ul .suit-total{ text-align: right; margin-right: 15px; margin-top: -35px;}
+        .delivery_rel_cont .deliv_items .de_itm_infolist .del_il_box .dib_style {
+            border: 1px solid #e5e5e5;
+        }
+        .delivery_rel_cont .deliv_items .de_itm_infolist .del_il_box .curr {border: 1px solid #ff5e5e;}
+    </style>
+
+</head>
+<body id="mainframe">
+
+<div class="order_header wrap">
+    <h1 class="clearfix">
+        <a class="logo" href="http://www.yhd.com"></a>
+        <a class="logo_txt" href="javascript:;"></a>
+    </h1>
+</div>
+
+<div class="website_tip wrap none">
+    <div class="website_tip_rel" style="display: none;">
+        <p></p>
+    </div>
+</div>
+<!-- /header -->
+<!--/ /widget/header/header.tpl -->
+
+<div id="consignee_back" name="consignee_back" style="display:none"></div>
+<div id="consignee_back_action" name="consignee_back_action" style="display:none"></div>
+<div id="part-invoice_back" name="part-invoice_back" style="display:none"></div>
+<div id="part-invoice_back_action" name="part-invoice_back_action" style="display:none"></div>
+<div id="payment-ship_back_action" name="payment-ship_back_action" style="display:none"></div>
+<div id="payment-ship_back" name="payment-ship_back" style="display:none"></div>
+<input type="hidden" name="beforePickSiteId" id="beforePickSiteId"><!--自提点-->
+<input type="hidden" name="beforePickDate" id="beforePickDate"><!--自提时间-->
+<input type="hidden" name="beforePickSiteNum" id="beforePickSiteNum"><!--默认5个-->
+<input type="hidden" name="beforePickRegionId" id="beforePickRegionId" value="-1"><!--搜索区域-->
+<input type="hidden" name="beforePickSelRegionid" id="beforePickSelRegionid"><!--搜索区域-->
+<input type="hidden" id="beforePickName" name="beforePickName">
+<input type="hidden" id="sopCartJson" value="[{&quot;id&quot;:2157070,&quot;num&quot;:1,&quot;shopId&quot;:0,&quot;cid&quot;:1592,&quot;gift&quot;:false}]">
+<input type="hidden" id="showInvoiceSeparate" value="true"><!-- 是否支持货票分离 -->
+<input type="hidden" id="invoiceSeparateSwitch" value="1"><!-- 货票分离开关值 -->
+<input type="hidden" id="hasBigItem" value="false">
+<input type="hidden" id="hasGiftCardSku" value="false">
+<input type="hidden" id="sopNotPutInvoice" value="false">
+<input type="hidden" id="isChangeItemByArea" value="false">
+<input type="hidden" id="hasTang9" value="false">
+<input type="hidden" id="isHasSam" value="false">
+<input type="hidden" id="needPay" value="99.00">
+<input type="hidden" id="consignee_id" name="consignee_id" value="118120102">
+<input type="hidden" id="hideAreaIds" value="14-1116-3432-50195">
+<input type="hidden" id="isPresale" value="false">
+<input type="hidden" id="presaleStepPay" value="">
+<input type="hidden" id="flowType" value="">
+<input type="hidden" id="flowId" value="">
+<input type="hidden" id="cur_payid" value="4">
+<input type="hidden" id="showCheckCode" value="false">
+<input type="hidden" id="reset_promise_311" value="0">
+<input type="hidden" id="resetFlag" value="0000000000">
+<input type="hidden" id="easyBuyFlag" value="">
+<input type="hidden" id="ui-dialog-close" value="">
+<input type="hidden" id="overseaPurchaseCookies" value="">
+<input type="hidden" id="isHasSimCard" value="false">
+<input type="hidden" id="ignorePriceChange" value="0">
+<input type="hidden" id="canBaitiaoDetail" value="false">
+<input type="hidden" id="getEquipInfo" value="true">
+<input type="hidden" id="selfPickShutDownFlag" value="0">
+<input type="hidden" id="selfPickOptimize" value="0">
+<input type="hidden" id="TrackID" name="TrackID" value="">
+<input type="hidden" id="invokeNewCouponInterface" name="invokeNewCouponInterface" value="false">
+<input type="hidden" id="submitButtonABTest" value="0">
+<input type="hidden" id="eid" value="HZJR3ER3PP23OVG3KOJAN2A52QFULE3TK7ROYKIKADDC5CYPVF2XYBYLYCAV3MQRPJCG6TA3BAC7AWULEJZB53YUJ4">
+<input type="hidden" id="fp" value="1e4f9073778e2b67a5a76218f4777106">
+<input type="hidden" id="baitiaoPayRequest" value="plan=1">
+<input type="hidden" id="baitiaoPayRepayDateRequest" value="repayDate=">
+<input type="hidden" id="jdpy_cardInfo" value="nocard">
+<form id="direct_pay" action="https://cashier.yhd.com/direct/directPay.do" method="post">
+    <input type="hidden" name="orderId">
+    <input type="hidden" name="toType">
+    <input type="hidden" name="orderType">
+    <input type="hidden" name="directPayInfoJson">
+    <input type="hidden" name="payMethod">
+    <input type="hidden" name="key">
+    <input type="hidden" name="countdownTime">
+    <input type="hidden" name="orderSubmitTime">
+    <input type="hidden" name="sendPayDict">
+</form>
+<input type="hidden" id="lastneedPay" value="99.00">
+<input type="hidden" id="btNeedPay" value="99.00">
+<input type="hidden" id="isNewVertual" name="isNewVertual" value="false">
+<input type="hidden" id="isBestCoupon" name="isBestCoupon">
+<input type="hidden" id="agreeNoRefundInMain" value="false">
+
+<input type="hidden" id="allFreightWeight" value="0.435kg">
+<input type="hidden" id="overFreightWeight" value="">
+<input type="hidden" id="copywritingContent" value="0">
+<input type="hidden" id="bigItemCopywritingContent" value="0">
+<input type="hidden" id="normalCopywritingContent" value="0">
+<input type="hidden" id="calendarCopywritingContent" value="0">
+<input type="hidden" id="needForJZD" value="0">
+<input type="hidden" id="needForJZDcalendar" value="0">
+<input type="hidden" id="allSxFreightWeight" value="">
+<input type="hidden" id="allWmFreightWeight" value="">
+<input type="hidden" id="overSxFreightWeight" value="">
+<input type="hidden" id="overWmFreightWeight" value="">
+<input type="hidden" id="totalFreightWeightShow" value="0.435">
+<input type="hidden" id="riskControl" value="D0E404CB705B973294F51AA86D575E705C3461F050E46C10A5C5E0879371C0DD2F1312F26EEB7506">
+<input type="hidden" id="newReplacedFlow" value="true">
+<input type="hidden" id="hongKongId" value="52993">
+<input type="hidden" id="taiWanId" value="32">
+<input type="hidden" id="overSeasId" value="53283">
+<div class="replacedSkus hide">[]</div>
+<input type="hidden" id="plusStatus" value="0">
+<input type="hidden" id="totalPrice" value="0">
+<div class="plusInfoConfig hide"></div>
+<input type="hidden" id="totalFreight" value="0">
+<div class="plusProductList hide">[]</div>
+<input type="hidden" id="closeRefreshSelfpick" value="">
+<input type="hidden" id="enterPriseUser" value="false">
+<input type="hidden" id="closeEnterPrisePayment" value="false">
+<input type="hidden" id="useBestCoupons" value="0">
+<!-- main -->
+<div id="container">
+    <div id="content" class="w">
+        <!-- <div class="m"> -->
+        <div class="orderInfo-tip hide" style="display: none;">
+            <span class="wicon"></span>
+            <span class="ftx-03"> </span>
+            <span class="cls-btn" onclick="closeorderInfotip()">x</span>
+        </div>
+
+        <div class="same_module consignee_adr wrap">
+            <div class="same_module_rel">
+                <div class="mod_rel_head clearfix">
+                    <span class="mr_tit">收货信息</span>
+                    <a class="add_address mr_ctrlbtn" href="#none" >新建地址</a>
+                </div>
+                <div class="consign_rel_cont">
+                    <ul id="consignee-list" class="clearfix" style="height: 120px;">
+                        <li id="consignee_index_118120102" class="consignee-item item-selected cur" consigneeid="118120102">
+                            <div class="total_info clearfix op-btns" id="consignee_index_div_118120102">
+                                <i class="fl sprite_odr  adr_icon"></i>
+                                <span class="fl tot_name">黄宝 安徽</span>
+                                <span class=" aa fr tot_edit " consigneeid="118120102" isoldaddress="false" style="display: none;">
+            <a href="#none" class="edit ftx-05 edit-consignee">编辑</a>
+            <a href="#none" class=" del ftx-05 del-consignee hide" style="display: block" fid="118120102">删除</a>
+        </span>
+                            </div>
+                            <div class="detail_info">
+                                <p>黄宝<span>181****3877</span></p>
+                                <p>安徽 合肥市 蜀山区 南岗镇</p>
+                                <p>安徽省合肥市蜀山区望江西路555号（安徽新华学院）</p>
+                            </div>
+                            <div class="sprite_odr is_choose"></div>
+                            <!-- 地址升级隐藏域信息 -->
+                            <input type="hidden" id="hid_upArea_118120102" consigneeid="118120102" isoldaddress="false" ismapping="false" newprovinceid="0" newcityid="0" newcountyid="0" newtownid="0" newprovincename="" newcityname="" newcountyname="" newtownname="" address_type="1" addressname="黄宝 安徽" name="黄宝" email="" mobile="181****3877" phone="" idcard="" address="安徽省合肥市蜀山区望江西路555号（安徽新华学院）" ceshi1="">
+                        </li>
+                    </ul>
+                    <a class="cng_more" href="#none" onclick="consignAdrSlide()" style="display: none;"><span>更多地址</span><em class="sprite_odr"></em></a>
+                </div>
+            </div>
+        </div>
+        <div id="shipAndSkuInfo">
+            <!--/ /widget/shopping-list/shopping-list.tpl -->
+            <div class="same_module pay_method wrap">
+                <div class="same_module_rel">
+                    <div class="mod_rel_head clearfix">
+                        <span class="mr_tit">支付方式</span>
+                    </div>
+                    <div type="hide"></div>
+                    <input type="hidden" id="totalPriceVender" value="0">
+                    <input type="hidden" id="totalNumVender" value="0">
+                    <div class="plusProductListVender none">[]</div>
+                    <div class="paymethd_rel_cont" id="payment-list">
+                        <input type="hidden" id="instalmentPlan" value="false">
+                        <span style="cursor: pointer;" onclick="save_Pay(1,0,1);">
+				            <a class=" payment-item  online-payment " for="pay-method-1" payname="货到付款" payid="1" onlinepaytype="0"><b></b>货到付款 <i class="sprite_odr"></i></a>
+			</span>
+                        <span style="cursor: pointer;">
+				            <a class=" payment-item item-selected cur online-payment " for="pay-method-4" payname="在线支付" payid="4" onlinepaytype="0"><b></b>在线支付<i class="sprite_odr"></i></a>
+			</span>
+
+                        <script>
+                            $(".payment-item").click(function () {
+                                $(this).addClass('cur').parent().siblings("span").find(".payment-item").removeClass("cur");
+                            })
+
+                            $('.online-payment')
+                                .hover(function(){
+                                    $(this).addClass('payment-item-hover');
+                                },function(){
+                                    $(this).removeClass('payment-item-hover');
+                                });
+                            if($("#payment-list li").length<=4){
+                                $('#payment-less').hide();
+                                $('#payment-more').hide();
+                                var payid=[5,2,8];
+                                for(var i in payid){
+                                    $("#payment-list div[payid="+payid[i]+"]").show();
+                                }
+                            }
+                            $('.payment-item-on').click(function(){
+                                $('#payment-less').hide();
+                                $('#payment-more').show();
+                                var payid=[5,2,8];
+                                for(var i in payid){
+                                    var payment = $("#payment-list div[payid="+payid[i]+"]");
+                                    if(!payment.hasClass("item-selected")){
+                                        payment.hide(100);
+                                    }
+                                }
+                            });
+                            $('.payment-item-off').click(function(){
+                                $('#payment-less').show();
+                                $('#payment-more').hide();
+                                var payid=[5,2,8];
+                                for(var i in payid){
+                                    var payment = $("#payment-list div[payid="+payid[i]+"]");
+                                    if(!payment.hasClass("item-selected")){
+                                        payment.show(100);
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="same_module delivery_list wrap">
+                <div class="same_module_rel">
+                    <div class="step-tit mod_rel_head clearfix">
+                        <span class="mr_tit">配送清单</span>
+                        <a href="" id="cartRetureUrl" class="return-edit ftx-05 mr_ctrlbtn">返回购物车修改</a>
+                    </div>
+                    <div class="step-cont" id="skuPayAndShipment-cont">
+                        <!--添加商品清单 -->
+                        <div class="shopping-lists" id="shopping-lists">
+                            <!--定义大商品清单LIST-->
+                            <div class="delivery_rel_cont">
+                                <div class="deliv_items clearfix">
+                                    <div class="de_item_sub de_itm_infolist" id="11">
+                                        <!--购物车单品商品-->
+                                        <!--一般套装商品-->
+                                        <!--满返套装商品-->
+                                        <!--满赠套装商品-->
+                                        <!--以下为京东配送方式-->
+                                        <!--配送方式-->
+                                        <!--配送方式-->
+                                        <!--配送方式-->
+                                        <div class="del_warp_box">
+                                            <!-- 实物商品搭售虚拟商品 -->
+                                            <!--jd 普通配送-->
+                                            <div class="del_il_box">
+                                                <div class="dib_tit clearfix">
+                                                    <b class="fl">配送方式</b>
+                                                    <div class="fr"><em class="fr">自营中小件</em>
+                                                        <div class="dib_dropiconbox"><i class="sprite_odr"></i>
+                                                            <div class="goods_list" style="display: none;">
+                                                                <i class="triggle_arrow"></i>
+                                                                <div class="good_listwrap">
+                                                                    <div class="good_listwrap">
+                                                                        <ul>
+                                                                            <li class="clearfix">
+                                                                                <div class="pic"><img src="//img14.360buyimg.com/N4/jfs/t4816/11/1882653649/401022/f898bc34/58f5dd7cNf941603c.jpg" width="38" height="38"></div>
+                                                                                <div class="name">科尔沁 休闲肉脯零食 内蒙古特产 手撕风干牛肉干孜然味400g</div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="dib_style  curr" id="jd_shipment_item" onclick="doSwithTab('pay')" clstag="pageclick|keycount|trade_201602181|11">
+                                                    京东配送 <i class="sprite_odr"></i>
+                                                </a>
+                                                <div class="dib_other_info ">
+                                                    <ul>
+                                                        <li class="clearfix" id="shipment_times">
+                                                            <div class="fl doi_pstyle clearfix">
+                                                                <div id="jd_shipment_calendar_date"><span class="fl span_tit">标&nbsp;&nbsp;准&nbsp;&nbsp;达：</span><span class="fl span_con">预计&nbsp;10月17日[周二]<br>15:00-19:00&nbsp;送达</span></div>
+                                                            </div>
+                                                            <a class="fr doi_ctrlbtn" id="jdshipdate_eidt_id" onclick="doEdit311Time()" href="javascript:;">修改</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <!--以下为京东大家电配送-->
+
+                                            <!--以下为京东第三方配送-->
+                                            <!--以下为第三方配送-->
+                                            <!--如果是SOP快递或者是京东中小件商品，但是不支持配送，则采用第三方配送-->
+                                            <!--sop大件入仓配送-->
+                                        </div>
+                                    </div><!--dis-modes 结束-->
+
+                                    <div class="goods-list de_item_sub de_itm_prodlist">
+                                        <div class="de_ib_box">
+                                            <!--购物车单品商品-->
+                                            <!--一般套装商品-->
+                                            <!--满返套装商品-->
+                                            <!--满赠套装商品-->
+                                            <!--配送方式-->
+                                            <div class="dib_tit">
+                                                <b class="vendor_name_h" id="0">商家：            1号店自营</b>
+                                            </div>
+                                            <div class="dib_con">
+                                                <ul class="clearfix">
+                                                    <!--单品开始-->
+                                                    <li class="clearfix" goods-id="2157070" sx-type="0">
+                                                        <div class="dc_pic">
+                                                            <a target="_blank" href="http://item.yhd.com/2157070.html"><img src="//img14.360buyimg.com/N4/jfs/t4816/11/1882653649/401022/f898bc34/58f5dd7cNf941603c.jpg" alt="" height="58" width="58"></a>
+                                                        </div>
+                                                        <div class="dc_info">
+                                                            <p class="inf_name">
+                                                                <a href="http://item.yhd.com/2157070.html" target="_blank">
+                                                                    科尔沁 休闲肉脯零食 内蒙古特产 手撕风干牛肉干孜然味400g
+                                                                </a>
+                                                            </p>
+                                                            <p class="inf_tip clearfix">
+                                                                <i class="sprite_odr disable"></i><span>不支持7天无理由退货</span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="dc_price">
+             <span><b>
+                 <!--增加预售金额显示 begin   预售分阶段支付类型（1：一阶梯全款支付；2：一阶梯定金支付(全款或定金可选)；3：三阶梯(仅定金)；4：三阶梯(全款或定金可选)；5：一阶梯仅定金支付） -->
+
+                                                               ￥ 99.00
+                 <!--增加预售金额显示 end-->
+             </b></span>
+                                                            <span><em>0.435kg</em></span>
+                                                        </div>
+                                                        <div class="dc_nums">
+                                                            <em>x</em>                                    1
+                                                        </div>
+                                                        <div id="pre-state" class="dc_tips p-state" skuid="2157070">有货</div>
+                                                    </li>
+
+                                                    <!--单品结束-->
+                                                    <!--一般套装开始-->
+                                                    <!--一般套装结束-->
+                                                    <!--满返套装开始-->
+                                                    <!--满返套装结束-->
+                                                    <!--满赠套装开始-->
+                                                    <!--满赠套装结束-->
+                                                </ul>
+                                            </div>
+                                            <!-- 买家版运费险 -->
+                                        </div>
+                                    </div><!--goods-list 结束-->
+                                    <!--
+                                    <div class="freight-cont">
+                                                                      <strong class="ftx-01" style="color:#666" freightByVenderId="0"  popJdShipment="false">免运费</strong>
+                                                         </div>
+                                  -->
+                                </div>
+                            </div><!--shopping-list 结束-->
+                            <form id="skuAndShipment_submit_form" method="post" action="">
+                                <input type="hidden" id="saveParam_paymentId" name="saveParam.paymentId"><!--支付方式id-->
+                                <input type="hidden" id="saveParam_otype" name="saveParam.onlinePayType">
+                                <!-- 京东配送 -->
+                                <input type="hidden" id="saveParam_jdShipmentType" name="saveParam.jdShipmentType" value="65"><!--京东配送-->
+                                <input type="hidden" id="saveParam_jdShipTime" name="saveParam.jdShipTime" value="4"><!-- 区分工作日，311，411-->
+                                <input type="hidden" id="saveParam_jdPayWayId" name="saveParam.jdPayWayId" value="0"><!--货到付款方式-->
+                                <input type="hidden" id="saveParam_jdCheckType" name="saveParam.jdCheckType" value="2"><!--如果是支票这个只是写死的[仅支持京东上门自取]-->
+                                <input type="hidden" id="saveParam_jdBigItemShipTimeOffset" name="saveParam.jdBigItemShipTimeOffset" value="0"><!--京东大家电配送时间偏移量-->
+                                <input type="hidden" id="saveParam_jdBigItemInstallTimeOffest" name="saveParam.jdBigItemInstallTimeOffest" value="0"><!--京东大家电安装时间偏移量-->
+                                <input type="hidden" id="saveParam_installTimeOffest" name="saveParam.installTimeOffest"><!--1号店自营落地配小件安装时间偏移量-->
+                                <!--311-->
+                                <input type="hidden" id="saveParam_promiseType" name="saveParam.promiseType" value="1"><!--1表示311类型，2表示411-->
+                                <input type="hidden" id="saveParam_promiseDate" name="saveParam.promiseDate" value="2017-10-17"><!--日历-->
+                                <input type="hidden" id="saveParam_promiseTimeRange" name="saveParam.promiseTimeRange" value="15:00-19:00"><!--波次-->
+                                <input type="hidden" id="saveParam_promiseSendPay" name="saveParam.promiseSendPay" value="{&quot;1&quot;:1,&quot;35&quot;:2,&quot;30&quot;:1}"><!--选择的sendpay-->
+                                <input type="hidden" id="saveParam_batchId" name="saveParam.batchId" value="2"><!--选择的sendpay-->
+                                <input type="hidden" id="saveParam_promiseMessage" name="saveParam.promiseMessage"><!--预约配送提示-->
+                                <!--411-->
+                                <input type="hidden" id="saveParam_jdBigItemNightShip" name="saveParam.jdBigItemNightShip" value="false"><!--大家电是否支持晚间配送-->
+                                <!--京东第三方配送-->
+                                <input type="hidden" id="saveParam_otherShipmentType" name="saveParam.otherShipmentType" value=""><!--京东第三方配送-->
+                                <input type="hidden" id="saveParam_otherShipTime" name="saveParam.otherShipTime" value=""><!--区分工作日，311，411-->
+                                <input type="hidden" id="saveParam_otherBigItemShipOffset" name="saveParam.otherBigItemShipOffset" value=""><!--京东大家电安装时间偏移量-->
+                                <input type="hidden" id="saveParam_otherBigItemInstallTimeOffset" name="saveParam.otherBigItemInstallTimeOffset" value=""><!--京东大家电配送时间偏移量-->
+                                <!--sop京东和第三方配送-->
+                                <input type="hidden" id="saveParam_sopShipment" name="saveParam.sopShipment" value=""><!--sop三方配送-->
+                                <input type="hidden" id="saveParam_sopOtherShipmentType" name="saveParam.sopOtherShipmentType" value=""><!--sop第三方配送-->
+                                <!-- 自提方式 -->
+                                <input type="hidden" id="saveParam_pickShipmentType" name="saveParam.pickShipmentType" value="">
+                                <!--自提方式-->
+                                <input type="hidden" id="saveParam_pickSiteId" name="saveParam.pickSiteId" value="1621"><!--自提点-->
+                                <input type="hidden" id="saveParam_pickDate" name="saveParam.pickDate" value="2017-10-17"><!--自提时间-->
+                                <input type="hidden" id="saveParam_pickSiteNum" name="saveParam.pickSiteNum" value="0"><!--默认5个-->
+                                <input type="hidden" id="saveParam_pickRegionId" name="saveParam.pickRegionId" value="-1"><!--搜索区域-->
+
+                                <input type="hidden" id="saveParam_jdBigItemPromiseType" name="saveParam.jdBigItemPromiseType">
+                                <input type="hidden" id="saveParam_jdBigItemPromiseDate" name="saveParam.jdBigItemPromiseDate">
+                                <input type="hidden" id="saveParam_jdBigItemPromiseTimeRange" name="saveParam.jdBigItemPromiseTimeRange">
+                                <input type="hidden" id="saveParam_jdBigItemPromiseSendPay" name="saveParam.jdBigItemPromiseSendPay">
+                                <input type="hidden" id="saveParam_jdBigItemBatchId" name="saveParam.jdBigItemBatchId">
+
+                                <input type="hidden" id="saveParam_otherBigItemPromiseType" name="saveParam.otherBigItemPromiseType">
+                                <input type="hidden" id="saveParam_otherBigItemPromiseDate" name="saveParam.otherBigItemPromiseDate">
+                                <input type="hidden" id="saveParam_otherBigItemPromiseTimeRange" name="saveParam.otherBigItemPromiseTimeRange">
+                                <input type="hidden" id="saveParam_otherBigItemPromiseSendPay" name="saveParam.otherBigItemPromiseSendPay">
+                                <input type="hidden" id="saveParam_otherBigItemBatchId" name="saveParam.otherBigItemBatchId"><!--搜索区域-->
+                            </form>
+                            <input type="hidden" id="mainSkuIdAndNums" value="2157070_1,"><!--icon隐藏域,用于更新库存-->
+                            <input type="hidden" id="calendar_hdata" value="[&quot;09:00-15:00&quot;,&quot;15:00-19:00&quot;]"><!--icon隐藏域，用户存日历控件时间段-->
+                            <input type="hidden" id="calendar_ddata" value="[{&quot;date&quot;:&quot;2017-10-16&quot;,&quot;week&quot;:&quot;今天&quot;,&quot;hours&quot;:[&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-17&quot;,&quot;week&quot;:&quot;周二&quot;,&quot;hours&quot;:[&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-18&quot;,&quot;week&quot;:&quot;周三&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-19&quot;,&quot;week&quot;:&quot;周四&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-20&quot;,&quot;week&quot;:&quot;周五&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-21&quot;,&quot;week&quot;:&quot;周六&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-22&quot;,&quot;week&quot;:&quot;周日&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]},{&quot;date&quot;:&quot;2017-10-23&quot;,&quot;week&quot;:&quot;周一&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-2-0&quot;]}]"><!--icon隐藏域，用户存日历控件日期-->
+                            <input type="hidden" id="calendar_x" value="1"><!--icon隐藏域，存日历控件X坐标-->
+                            <input type="hidden" id="calendar_y" value="1"><!--icon隐藏域，用日历控件Y坐标-->
+                            <input type="hidden" id="calendar_big_hdata" value=""><!--icon隐藏域，用户存日历控件时间段-->
+                            <input type="hidden" id="calendar_big_ddata" value=""><!--icon隐藏域，用户存日历控件日期-->
+                            <input type="hidden" id="calendar_big_bzd_hdata" value=""><!--icon隐藏域，用户存日历控件时间段-->
+                            <input type="hidden" id="calendar_big_bzd_ddata" value=""><!--icon隐藏域，用户存日历控件日期-->
+                            <input type="hidden" id="calendar_big_x" value=""><!--icon隐藏域，存日历控件X坐标-->
+                            <input type="hidden" id="calendar_big_y" value=""><!--icon隐藏域，用日历控件Y坐标-->
+                            <input type="hidden" id="calendar_big_bzd_x" value=""><!--icon隐藏域，存日历控件X坐标-->
+                            <input type="hidden" id="calendar_big_bzd_y" value=""><!--icon隐藏域，用日历控件Y坐标-->
+                            <input type="hidden" id="last_sel_promiseDate" value="2017-10-17"><!--icon隐藏域，记录上次选中的日期-->
+                            <input type="hidden" id="last_sel_promiseTimeRange" value="15:00-19:00"><!--icon隐藏域，记录上次选中的时间段-->
+                            <input type="hidden" id="last_sel_promiseSendPay" value="{&quot;1&quot;:1,&quot;35&quot;:2,&quot;30&quot;:1}"><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="last_sel_batchId" value="2"><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_last_sel_promiseDate" value=""><!--icon隐藏域，记录上次选中的日期-->
+                            <input type="hidden" id="big_last_sel_promiseTimeRange" value=""><!--icon隐藏域，记录上次选中的时间段-->
+                            <input type="hidden" id="big_last_sel_promiseSendPay" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_last_sel_batchId" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_last_sel_offset" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_bzdrl_last_sel_promiseDate" value=""><!--icon隐藏域，记录上次选中的日期-->
+                            <input type="hidden" id="big_bzdrl_last_sel_promiseTimeRange" value=""><!--icon隐藏域，记录上次选中的时间段-->
+                            <input type="hidden" id="big_bzdrl_last_sel_promiseSendPay" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_bzdrl_last_sel_offset" value="">
+                            <input type="hidden" id="big_bzdrl_last_sel_batchId" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_bzd_last_sel_promiseDate" value=""><!--icon隐藏域，记录上次选中的日期-->
+                            <input type="hidden" id="big_bzd_last_sel_promiseTimeRange" value=""><!--icon隐藏域，记录上次选中的时间段-->
+                            <input type="hidden" id="big_bzd_last_sel_promiseSendPay" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="big_bzd_last_sel_batchId" value=""><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="bigshipment_bzd_type" value="0"><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="shipment411_sendpay" value=""><!--411sendpay-->
+                            <input type="hidden" id="shipment_support_type" value="013"><!--icon隐藏域，当前311和411支持的类型，0表示311,411都不支持,1表示只支持311,2表示只支持411,3表示311,411都支持-->
+                            <input type="hidden" id="shipment_select_support" value="1"><!--icon隐藏域，当前311和411选中的是哪一个，1表示选中311,2表示选中411,3表示准时达-->
+                            <input type="hidden" id="bigshipment_bzd_support" value="0"><!--icon隐藏域，当前准时达和标准达支持的类型，标准达 0表示不支持,1表示支持-->
+                            <input type="hidden" id="bigshipment_bzd_shipAndInstall" value="0"><!--icon隐藏域，大家电标准达是否支持送装一体，1：支持  0不支持不处理,-1不支持-->
+                            <input type="hidden" id="bigshipment_jzd_support" value="0"><!--icon隐藏域，当前准时达和标准达支持的类型，准时达 0表示不支持,1表示支持-->
+                            <input type="hidden" id="bigshipment_select_support" value="1"><!--icon隐藏域，当前准时达和标准达选中的是哪一个，1表示选中准时达,2表示选中标准达-->
+                            <input type="hidden" id="shipment_cur411_support" value=""><!--icon隐藏域，当前411是否还支持配送，1支持，2不支持-->
+                            <input type="hidden" id="shipment411_msg" value=""><!--icon隐藏域，411提示信息-->
+                            <input type="hidden" id="pick_sel_regionid" value="-1"><!--icon隐藏域，临时存放选中的自提点区域ID-->
+                            <input type="hidden" id="temp_pick_sel_regionid" value=""><!--icon隐藏域，临时存放选中的自提点区域ID-->
+                            <input type="hidden" id="pick_sel_id" value=""><!--icon隐藏域，临时存放选中的自提点ID-->
+                            <input type="hidden" id="is_invoke_pickdate" value="0"><!--自提时间隐藏域，是否要刷新自提点时间-->
+                            <input type="hidden" id="is_refresh_installdate" value=""><!--icon隐藏域，是否要刷新商品安装时间-->
+                            <input type="hidden" id="bigItemCodDates" value=""><!--icon隐藏域，是否要刷新商品安装时间-->
+
+                            <input type="hidden" id="popVenderIdStr" value="0"><!--icon隐藏域，所有店铺ID串-->
+                            <input type="hidden" id="locShopIdStr" value=""><!--icon隐藏域，所有loc门店ID串 -->
+
+                            <input type="hidden" id="calendar_hdata_zxj_jzd" value="[&quot;09:00-11:00<em class='frei'>(￥3.00)</em>&quot;,&quot;11:00-13:00<em class='frei'>(￥3.00)</em>&quot;,&quot;13:00-15:00<em class='frei'>(￥3.00)</em>&quot;,&quot;16:00-18:00<em class='frei'>(￥3.00)</em>&quot;,&quot;18:00-20:00<em class='frei'>(￥3.00)</em>&quot;]"><!--icon隐藏域，用户存日历控件时间段-->
+                            <input type="hidden" id="calendar_ddata_zxj_jzd" value="[{&quot;date&quot;:&quot;2017-10-16&quot;,&quot;week&quot;:&quot;今天&quot;,&quot;hours&quot;:[&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-17&quot;,&quot;week&quot;:&quot;周二&quot;,&quot;hours&quot;:[&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;0-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-18&quot;,&quot;week&quot;:&quot;周三&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-19&quot;,&quot;week&quot;:&quot;周四&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-20&quot;,&quot;week&quot;:&quot;周五&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-21&quot;,&quot;week&quot;:&quot;周六&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-22&quot;,&quot;week&quot;:&quot;周日&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]},{&quot;date&quot;:&quot;2017-10-23&quot;,&quot;week&quot;:&quot;周一&quot;,&quot;hours&quot;:[&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-1-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-2-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:1,\&quot;30\&quot;:1}-3-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-4-0&quot;,&quot;1-{\&quot;1\&quot;:1,\&quot;35\&quot;:2,\&quot;30\&quot;:1}-5-0&quot;]}]"><!--icon隐藏域，用户存日历控件日期-->
+                            <input type="hidden" id="calendar_x_zxj_jzd" value="3"><!--icon隐藏域，存日历控件X坐标-->
+                            <input type="hidden" id="calendar_y_zxj_jzd" value="1"><!--icon隐藏域，用日历控件Y坐标-->
+                            <input type="hidden" id="last_sel_promiseDate_zxj_jzd" value="2017-10-17"><!--icon隐藏域，记录上次选中的日期-->
+                            <input type="hidden" id="last_sel_promiseTimeRange_zxj_jzd" value="16:00-18:00"><!--icon隐藏域，记录上次选中的时间段-->
+                            <input type="hidden" id="last_sel_promiseSendPay_zxj_jzd" value="{&quot;1&quot;:1,&quot;35&quot;:2,&quot;30&quot;:1}"><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="last_sel_batchId_zxj_jzd" value="4"><!--icon隐藏域，记录上次选中的sendpay-->
+                            <input type="hidden" id="promiseSopViewList" value="[]"><!--sop日历弹窗隐藏域-->
+                            <input type="hidden" id="jzdAmount_hidden" value="准时达"><!--准时达运费收费标准-->
+                            <input type="hidden" id="jsdAmount_hidden" value="极速达 （￥99）"><!--极速达运费收费标准-->
+                            <input type="hidden" id="djzdAmount_hidden" value="准时达"><!--大家电准时达运费收费标准-->
+                            <input type="hidden" id="bigItemJzdInstallTimeOffest" value=""><!--大家电准时达安装偏移量-->
+                            <input type="hidden" id="bigItemInstallTimeOffest" value=""><!--大家电标准达安装偏移量-->
+                            <input type="hidden" id="forcedChoice" autocomplete="off" value=""><!--生鲜是否显示默认时效-->
+                            <!--隐藏的自营落地配小件安装日历开始-->
+                            <script id="installEdit" type="text/temp">
+
+                            </script>
+                            <!--隐藏的自营落地配小件安装日历结束-->
+                            <!--隐藏的sop配送日历开始-->
+                            <script id="sop_shipment_hidediv" type="text/temp">
+		  <div class="date-thickbox" >
+				<div class="tab-nav">
+					<ul>
+						<li class="tab-nav-item tab-item-selected" >标准达 <b> </b> </li>
+					</ul>
+				</div>
+				<div class="tab-con" id="tab_sop_div">
+					<div class="date-delivery" id="date-delivery-sop"></div>
+					<div class="ftx-03 mt20">
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+					<div class="op-btns mt10 ac"> <a id="timeSaveSop" clstag="pageclick|keycount|trade_201602181|52" href="javascript:void(0);"  class="btn-1">确定 </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+				</div>
+		</div>
+	</script>
+                            <!--隐藏的sop配送日历结束-->
+                            <!--隐藏的311配送日历开始-->
+                            <script id="shipment_hidediv" type="text/temp">
+		  <div class="date-thickbox" >
+				<div class="tab-nav">
+					<ul>
+						<li class="tab-nav-item" id="li_zxj_id" onclick="doSwith311Tab('zxj')"><span id="jzdAmount"></span> <b> </b> </li>
+						<li class="tab-nav-item" id="li_311_id" onclick="doSwith311Tab('311')">标准达 <b> </b> </li>
+						<li class="tab-nav-item" id="li_411_id" onclick="doSwith311Tab('411')"><span id="jsdAmount"></span><b> </b> </li>
+					</ul>
+				</div>
+				<div class="tab-con" id="tab_zxj_div">
+					<div class="date-delivery date-delivery-freight" id="date-delivery0"></div>
+					<div class="ftx-03 mt20">
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+		           	 <div class="tips-618 mt20 hide tips-618-for-calendar">
+		              <div class="tips-con">
+		                <p class="tips-m">双11大促恰逢周末，请确认好收货地址和时间以保证货物及时送达。</p>
+		          	  </div>
+		         	 </div>
+					<div class="op-btns mt10 ac"> <a id="timeSaveZxj" clstag="pageclick|keycount|trade_201602181|52" href="javascript:void(0);"  class="btn-1">确定 </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+				</div>
+				<div class="tab-con hide" id="tab_311_div">
+					<div class="date-delivery date-delivery-new" id="date-delivery1"></div>
+					<div class="ftx-03 mt20">
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+		           	 <div class="tips-618 mt20 hide tips-618-for-calendar">
+		              <div class="tips-con">
+		                <p class="tips-m">双11大促恰逢周末，请确认好收货地址和时间以保证货物及时送达。</p>
+		          	  </div>
+		         	 </div>
+					<div class="op-btns mt10 ac"> <a id="timeSave311" clstag="pageclick|keycount|trade_201602181|51" href="javascript:void(0);"  class="btn-1"> 确定 </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+				</div>
+				<div class="tab-con hide" id="tab_411_div">
+					<div> 下单后或支付成功后2小时送达</div>
+					<div class="ftx-03 mt20" id="message_show_411">
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+					<div class="op-btns mt10 ac"> <a id="timeSave411" clstag="pageclick|keycount|trade_201602181|53" class="btn-1"> 确定 </a> <a href="javascript:jQuery.closeDialog();" class="btn-9 ml10"> 取消 </a> </div>
+				</div>
+		</div>
+	</script>
+                            <!--隐藏的311配送日历结束-->
+                            <!--隐藏的大家电配送日历开始-->
+                            <script id="bigShipment_hidediv" type="text/temp">
+		  <div class="date-thickbox">
+				<div class="tab-nav">
+					<ul>
+						<li class="tab-nav-item tab-item-selected" id="li_djd_id" onclick="doSwithBigTab('djd')"><span id="djzdAmount"></span> <b> </b> </li>
+						<li class="tab-nav-item" id="li_bzd_id" onclick="doSwithBigTab('bzd')">标准达 <b> </b> </li>
+					</ul>
+				</div>
+				<div class="tab-con" id="tab_djd_div">
+					<div class="date-delivery date-delivery-freight" id="big-date-delivery0"></div>
+					<div class="ftx-03 mt20">
+					<i class="date-delivery-icon"></i>
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+                    <div class="tips-618 mt20 hide tips-618-for-calendar">
+                        <div class="tips-con">
+                            <p class="tips-m">双11大促恰逢周末，请确认好收货地址和时间以保证货物及时送达。</p>
+                        </div>
+                    </div>
+					<div class="op-btns mt10 ac"> <a id="timeSaveDjdJzd" clstag="pageclick|keycount|trade_201602181|55" href="javascript:void(0);"  class="btn-1"> 确定  </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+		         </div>
+				 <div class="tab-con hide" id="tab_bzd_div">
+					<div class="date-delivery date-delivery-new" id="big-date-delivery1"></div>
+					<div class="ftx-03 mt20">
+					<i class="date-delivery-icon"></i>
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+                     <div class="tips-618 mt20 hide tips-618-for-calendar">
+                         <div class="tips-con">
+                             <p class="tips-m">双11大促恰逢周末，请确认好收货地址和时间以保证货物及时送达。</p>
+                         </div>
+                     </div>
+					<div class="op-btns mt10 ac"> <a id="timeSaveBzd" clstag="pageclick|keycount|trade_201602181|54" href="javascript:void(0);"  class="btn-1"> 确定  </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+				 </div>
+		  </div>
+	</script>
+                            <!--隐藏的大家电配送日历结束-->
+                            <!--隐藏的sop大件配送日历开始-->
+                            <script id="sop_bigShipment_hidediv" type="text/temp">
+		  <div class="date-thickbox">
+				<div class="tab-nav">
+					<ul>
+						<li class="tab-nav-item tab-item-selected">标准达 <b> </b> </li>
+					</ul>
+				</div>
+				 <div class="tab-con" id="tab_sop_bzd_div">
+					<div class="date-delivery date-delivery-new" id="sop-big-date-delivery"></div>
+					<div class="ftx-03 mt20">
+					<i class="date-delivery-icon"></i>
+						温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！
+					</div>
+                     <div class="tips-618 mt20 hide tips-618-for-calendar">
+                         <div class="tips-con">
+                             <p class="tips-m">双11大促恰逢周末，请确认好收货地址和时间以保证货物及时送达。</p>
+                         </div>
+                     </div>
+					<div class="op-btns mt10 ac"> <a id="timeSaveSopBzd" clstag="pageclick|keycount|trade_201602181|54" href="javascript:void(0);"  class="btn-1"> 确定  </a> <a href="javascript:jQuery.closeDialog();"  class="btn-9 ml10"> 取消 </a> </div>
+				 </div>
+		  </div>
+	</script>
+                            <!--隐藏的sop大件配送日历结束-->
+                            <script id="nostock-box01" type="text/temp">
+    <div class="limited-thickbox">
+    	<div class="tip-box icon-box">
+    		<span class="warn-icon m-icon"></span>
+    		<div class="item-fore">
+    			<h3>下手慢了~部分商品被抢空，继续结算其它商品？</h3>
+    		</div>
+    	</div>
+    	<div class="goods-items" id="out-skus">
+    	</div>
+    	<div class="op-btns ac">
+    			<a href="javascript:continueBuy()" class="btn-1" clstag="trade|keycount|sop|bfwhjxjs">继续</a>
+    			<a href="javascript:goCart()" class="btn-9 ml10" clstag="trade|keycount|sop|bfwhfhgwc">返回购物车</a>
+    	</div>
+    </div>
+    </script>
+                            <div id="trade-nostock-recommendation-render" style="display:none"></div>
+                            <script id="nostock-box02" type="text/temp">
+    <div class="limited-thickbox">
+    	<div class="tip-box icon-box">
+    		<span class="warn-icon m-icon"></span>
+    		<div class="item-fore">
+    			<h3>下手慢了~全部商品被抢空了
+					<span class="extra">
+                        <a href="javascript:goCart()" class="btn-9 ml10" clstag="trade|keycount|sop|qbwhfhgwc">返回购物车</a>
+                    </span>
+				</h3>
+    		</div>
+    	</div>
+    	<div class="p-lists">
+    		<div class="mt">
+    			看看其他的...
+    		</div>
+    		<div class="mc" id="trade-nostock-recommendation">
+    		</div>
+    	</div>
+    </div>
+    </script>
+                            <!--隐藏的无货代下单div-->
+                            <script id="nostock-box03" type="text/temp">
+    <div class="nostock-thickbox">
+    	<div class="tip-box icon-box-new">
+			<span class="warn-icon m-icon"></span>
+			<div class="item-fore">
+				<h3>下手慢了，部分商品被抢空，是否继续购买？</h3>
+				<span>商品可能不满足某些优惠条件</span>
+			</div>
+		</div>
+    	<div class="goods-items" id="out-skus">
+    	</div>
+    <div class="subs-info" id="detailAddr" style="display:none">
+		<span class="sub-tit">到货代下单信息：</span>
+		<br>
+		<span class="fl">下一个月到货自动为您下单</span>
+		<em class="fl ml10 mr10">|</em>
+		<span class="fl">在线支付</span>
+		<em class="fl ml10 mr10">|</em>
+		<span class="fl ml5 mr5" id="name"></span>
+		<span class="fl ml5 mr5" id="addrTel"></span>
+		<span class="fl addr ml5" id="addrInfo"></span>
+		<br>
+		<span>可以去<em class="ml5 mr5">我的京东-京东代下单</em><a href="//skunotify.yhd.com/storeOrderSubMvc/queryStoreSub.do" target="_blank" class="ftx-05">查看详情</a></span>
+	</div>
+	<div class="op-btns ar">
+		<a href="javascript:continueBuy()" class="btn-1">确定</a>
+		<a href="javascript:goCart()" class="btn-9 ml10">取消</a>
+	</div>
+    </div>
+</script>
+                            <!--无货代下单失败提示div-->
+                            <script id="nostock-failed" type="text/temp">
+		<div class="nostock-tipsbox" >
+			<div class="tip-box icon-box-new">
+				<span class="error-icon m-icon"></span>
+				<div class="item-fore">
+					<h3>提交失败</h3>
+					<span>可能是由于网络问题，导致提交失败，尝试返回填写</span>
+				</div>
+			</div>
+			<div class="op-btns ac mt20 ml30">
+				<a href="javascript:goCart()" class="btn-1">返回</a>
+				<a href="#nogo" id="nostock-failedClose" class="btn-9 ml10">关闭</a>
+			</div>
+		</div>
+</script>
+                            <div class="orderConfirm_dialog no_stock_dialog">
+                                <div class="od_cont">
+                                    <div class="orderConfirm_dialog_tit">
+                                        <h3 class="tit">商品无货</h3>
+                                        <span class="sprite_odr close_icon pop_close"></span>
+                                    </div>
+                                    <div class="orderConfirm_dialog_relbox">
+                                        <div class="distribution_tips clearfix">
+                                            <div class="distribution_tips_text">以下商品无货，请返回购物车修改。</div>
+                                        </div>
+                                        <div class="distribution_list">
+                                            <table width="100%" cellspacing="0" cellpadding="0">
+                                                <thead>
+                                                <tr>
+                                                    <th width="210">商品名称</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- 按钮 -->
+                                        <div class="dialog_btn">
+                                            <a href="//cart.yhd.com/cart.do" class="btn save_btn ">返回购物车</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--无货代下单成功提示div-->
+                            <script id="nostock-success" type="text/temp">
+<div class="nostock-tipsbox">
+	<div class="tip-box tip-box-succ icon-box-new">
+		<span class="succ-icon m-icon"></span>
+		<div class="item-fore">
+			<h3>订阅消息成功！</h3>
+		</div>
+	</div>
+	<div class="op-btns ac mt20 ml80">
+		<a href='javascript:goCart()' class="btn-1">返回购物车</a>
+		<a href='//skunotify.yhd.com/storeOrderSubMvc/queryStoreSub.do' target='_blank' class="btn-9 ml10">查看代下单详情</a>
+	</div>
+</div>
+</script>
+                            <script>
+                                /**
+                                 * 退换无忧浮层
+                                 */
+                                $(".J-mode-infor-tips").hover(
+                                    function() {
+                                        $(this).find(".mode-infor-tips").show();
+                                    },
+                                    function() {
+                                        $(this).find(".mode-infor-tips").hide();
+                                    }
+                                );
+                                $('.dib_dropiconbox').hover(function(){  //大小件 商品下拉
+                                    $(this).find('.goods_list').show();
+                                } , function(){
+                                    $(this).find('.goods_list').hide();
+                                })
+                            </script>
+
+                        </div>
+                        <!--shopping-lists 结束-->
+                    </div>
+                    <div class="add_remark hide" id="orderRemarkItem">
+                        <p class="a_rmk_tit">添加订单备注:</p>
+                        <div class="a_rmk_con clearfix">
+                            <input class="fl" maxlength="45" id="remarkText" onkeyup="cleanSpelChar(this)" placeholder="限45个字（定制类商品，请将购买需求在备注中做详细说明）" type="text">
+                            <span class="fl">提示：请勿填写有关支付、收货、发票方面的信息</span>
+                        </div>
+                    </div>    </div>
+            </div>                </div>
+        <!--添加商品清单结束-->
+    </div>
+
+    <!-- 结算栏 开始-->
+    <div class="settling_column_bar">
+        <div class="pay_tools_bar tools_bar_bottom">
+            <div class="pay_tools_inner clearfix">
+                <div class="pay_tli_adr">
+                    <p class="adr_name_tel"><span class="pta_name">黄宝</span><span class="pta_tel">181****3877</span></p>
+                    <p class="adr_detail"><i class="sprite_odr"> </i><span class="area_Name"> 安徽 合肥市 蜀山区 南岗镇  安徽省合肥市蜀山区望江西路555号（安徽新华学院）</span>
+                    </p>
+                </div>
+                <!--定金预售 -->
+                <div class="pay_tli_price">
+                    <ul class="clearfix">
+                        <li class="fl prod_jr">
+                            <div class="ptp_tit"><span>商品金额</span></div>
+                            <div id="promotionPrice" class="ptp_con"><em>¥</em>99.00</div>
+                        </li>
+                        <li class="fl prod_yh">
+                            <div class="ptp_tit"><span>优惠</span></div>
+                            <div class="ptp_con"><em>¥</em>0.00</div>
+                        </li>
+                        <li class="fl prod_dy">
+                            <div class="ptp_tit"><span>抵扣</span></div>
+                            <div class="ptp_con" id="dicouAmountBar"><em>¥</em>0.00</div>
+                        </li>
+                        <li class="fl prod_yf">
+                            <div class="ptp_tit clearfix">
+                                <span class="fr">运费</span>
+                            </div>
+                            <div class="ptp_con" id="freightPriceId"><em>¥</em>0.00</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pay_tli_count">
+                    <p class="ptc_tips">还需支付</p>
+                    <p id="payPrice" class="ptc_count"><em>¥</em><b>99.00</b></p>
+                </div>
+                <a class="pay_btn_smbit " onclick="submit_Order();">提交订单</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- /main -->
+
+<!--  /widget/footer/footer.tpl -->
+<div id="footer">
+    <div class="bordertop_solid mt20 pb10">
+        <div class="sitemap2">
+            <ul>
+                <li><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">沪ICP备16050468号</a></li>
+                <li class="gray ml5 mr5">|</li>
+                <li><a href="http://d7.yihaodianimg.com/N09/M07/BD/7B/ChEi11kJnKaAJQMrAAK-LnhML4o60600.jpg" target="_blank">营业执照</a></li>
+            </ul>
+        </div>
+        <div class="copyright">Copyright© 1号店网上超市 2007-2017， All Rights Reserved</div>
+    </div>
+</div>
+
+<!-- footer end -->
+
+<iframe id="globalLocalStorageAdaptorForGet" style="display:none"
+        src="http://www.yhd.com/html/getLocalStorage.html?v=20171013" loaded="1"></iframe>
+<div id="overlay" style="margin: 0px; padding: 0px; border: none; width: 100%; height: 100%; background: rgb(51, 51, 51); opacity: 0.6; z-index: 9999; position: fixed; top: 0px; left: 0px; display: none;"></div>
+
+<div id="easyDialogBox" style="margin: -297px 0px 0px -411px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+    <div class="my_or_dialog hide" id="my_or_dialog" style="display: block; margin: 0px;">
+        <div class="dialog_order_form">
+            <h3 class="cell_h3">编辑收货地址信息</h3>
+            <a href="javascript:;" class="close_window">关闭</a>
+            <div class="dia_main">
+                <dl class="user_list clearfix">
+                    <dd class="user_ddt">
+                        <label class="user_name"><span>*</span>收 件 人：</label>
+                        <input type="text" id="temp_name" value="" maxlength="25">
+                    </dd>
+                    <dd style="height:20px;float:left;margin-top:-20px;">
+                        <span id="receiverNameDesc" class="showErrorInfo" style="display: none;">请您填写收货人姓名</span>
+                        <span id="receiverNameInputDesc" class="showErrorInfo" style="display: none;">收件人不能包含特殊字符，长度不超过25个字</span>
+                    </dd>
+                    <dd class="user_ddt four_address">
+                        <label class="user_name"><span>*</span>收货地址：</label>
+                        <input type="text" id="userSelectProvinceId" value="">
+                    </dd>
+                    <dd class="user_ddt detailed_address">
+                        <label class="user_name"><span>*</span>详细地址：</label>
+                        <input type="text" id="temp_addressDetail" placeholder="街道名称/编号，楼宇名称，单位，房号" maxlength="50">
+                    </dd>
+                    <dd class="user_ddt">
+                        <label class="user_name"><span>*</span>手机号码：</label>
+                        <input type="text" id="temp_mobile" placeholder="常用手机号码" style="width:200px;" maxlength="11">
+                    </dd>
+
+                    <dd class="user_ddt address_labels">
+                        <label class="user_name">地址标签：</label>
+                        <div class="write_labels ">
+                            <input type="text" id="temp_addressName" placeholder="最多二十个字哟" maxlength="20">
+                            <p class="tips" id="longAddressNameDesc" style="display: none;">标签最多二十个字，请重新输入</p>
+                            <p class="tips" id="errorAddressNameDesc" style="display: none;">标签中含有非法字符</p>
+                        </div>
+                        <ul class="user_ddt_address">
+                            <li>
+                                <span>家</span>
+                            </li>
+                            <li>
+                                <span>公司</span>
+                            </li>
+                            <li>
+                                <span>学校</span>
+                            </li>
+                            <li class="user_defined">
+                                <span>等等</span>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <p class="btn_layout">
+                <a href="javascript:;" class="btn_keeps clearfix">保存</a>
+                <a href="javascript:;" class="btn_cancel clearfix">取消</a>
+                <span class="errorTipsFor" id="errorTipsForUser" style="display: none"></span>
+            </p>
+        </div></div>
+</div>
+<script>
+    //    添加
+    $(".add_address").click(function () {
+        $("#easyDialogBox").css("display","block");
+        $("#overlay").css("display","block");
+        $(".cell_h3").html("新建地址");
+    })
+    //关闭
+    $(".close_window").click(function () {
+        $("#easyDialogBox").css("display","none");
+        $("#overlay").css("display","none");
+    })
+
+    //    编辑
+    $(".edit").click(function () {
+        $("#easyDialogBox").css("display","block");
+        $("#overlay").css("display","block");
+        $(".cell_h3").html("编辑收货地址");
+    })
+    //    显示编辑和删除按钮
+    $("#consignee_index_118120102").hover(function(){
+        $(".aa").css("display","block");
+    },function(){
+        $(".aa").css("display","none");
+    });
+
+//    删除
+    $(".del").click(function () {
+        if (confirm("确认删除吗？")){
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

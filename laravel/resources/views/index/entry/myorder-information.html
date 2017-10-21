@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myorder-information</title>
+    <!--css start-->
+    <link href="//img.yihaodianimg.com/myyhd/global/css/global_site_base.css?0" rel="stylesheet" type="text/css"/>
+    <link href="//img.yihaodianimg.com/myyhd/member/css/myInfo.css?0" rel="stylesheet" type="text/css"/>
+    <link href="//img.yihaodianimg.com/myyhd/member/css/address.css?0" rel="stylesheet" type="text/css"/>
+
+    <!--css end-->
+    <!--js start-->
+    <script type="text/javascript">
+        var URLPrefix = {
+            "shop": "//shop.yhd.com",
+            "busystock": "//gps.yhd.com",
+            "cms": "//cms.yhd.com",
+            "img": "//image.yihaodian.com",
+            "pms": "//pms.yhd.com",
+            "my_statics": "//static.yihaodian.com/member",
+            "passportmall": "https://passport.1mall.com",
+            "shoping_pms": "//pms.yihaodian.com",
+            "shoping_shop": "//shop.yhd.com",
+            "search": "//search.yhd.com",
+            "sitedomain": ".yhd.com",
+            "tryUrl": "//try.yhd.com",
+            "shoping_self": "//www.yhd.com",
+            "tracker": "tracker.yhd.com",
+            "commentZoneMall": "//e.1mall.com/front-pe",
+            "productDetailHost": "//www.yhd.com",
+            "central": "//www.yhd.com",
+            "search_list": "//search.yhd.com",
+            "cartDomain": "//cart.yhd.com",
+            "footFriendLink": "//www.yhd.com/friendlink/index.do",
+            "centralShop": "//shop.yhd.com",
+            "shoping_passport": "https://passport.yhd.com",
+            "shoping_my_statics": "//static.yihaodian.com/statics",
+            "uploadPostUrl": "//upload.yihaodian.com/upload/UploadAction",
+            "shoping_my": "//my.yhd.com",
+            "shoping_search": "//search.yhd.com:80",
+            "shoping_opposite": "//www.1mall.com",
+            "shoping_central": "//www.yhd.com",
+            "my": "//my.yhd.com",
+//            "search_keyword": "//search.yhd.com",
+            "mymall": "//my.1mall.com",
+            "selfroot": "//www.yhd.com",
+            "products_stock": "//gps.yhd.com/busystock",
+            "sitedomainmall": ".1mall.com",
+            "item": "//item.yhd.com/",
+            "tuangou": "//www.yhd.com/tuangou/index.do",
+            "commentZoneYhd": "//e.yhd.com/front-pe",
+            "centralImgDomain": ".yihaodianimg.com",
+            "productDetailUrl": "//www.yhd.com",
+            "passport": "https://passport.yhd.com",
+            "statics": "//img.yihaodianimg.com/myyhd",
+            "mobile": "http://m.yhd.com",
+            "mall": "//www.1mall.com"
+        };
+        var headerType = "base";
+        var imagePath = "//img.yihaodianimg.com/myyhd/global/images";
+        var currSiteId = 1;
+        var currSiteType = 1;
+        var globalEnv = "PRODUCTION";
+        var siteStyle = 1;
+        var siteFlag = 0;
+        var isIndex = 0;
+        var indexFlag = 0;
+        var currProvinceId = 1;
+        var currVersionNum = "0";
+        var lazyLoadImageObjArry = lazyLoadImageObjArry || [];
+        var isFixTopNav = false;
+        (function (flag) {
+            if (flag) {
+                window.globalPrismFlag = '1';
+                window.globalPrismFeedbackURL = '//cms.yhd.com/cms/view.do?topicId=43';
+                window.globalPrismQRName = '';
+                window.globalPrismQRTitle = '手机购物更优惠';
+                window.globalPrismQRPng = '//img.yihaodianimg.com/front-homepage/index/images/qryhd.png';
+                window.globalPrismMemberLink = '//home.yhd.com/myyhdindex/index.do';
+                window.globalPrismCartLink = '//cart.yhd.com/cart/cart.do';
+                window.globalPrismCouponLink = '//coupon.yhd.com/myCoupon';
+            }
+        })(false);
+        <!--增加一个开关来控制是否显示搜索框下拉,为时才不调用-->
+        <!--搜索热词开关-->
+        <!--用于控制宽窄屏属性-->
+    </script>
+    <!--js end-->
+
+</head>
+<body id="comParamId" data-param="{&quot;globalPageCode&quot;:&quot;-1&quot;,&quot;currPageId&quot;:&quot;-1&quot;}"
+      class="w980">
+<div class="hd_header_wrap">
+    <!-- top_bar -->
+    <div class="hd_top_bar">
+        <div class="wrap clearfix">
+            <a href="" class="hd_topbar_home">
+                <i class="hd_iconfont"></i>
+                <span>1号店首页</span>
+            </a>
+            <div class="hd_topbar_right">
+                <ul>
+                    <li id="global_unlogin" style="display: none;">
+                        <div class="hd_unlogin">
+                            <span class="hd_hi">Hi,请</span>
+                            <a href="" class="hd_login_link">登录&nbsp;</a>
+                            <a href="" class="hd_regist_link">&nbsp;注册</a>
+                        </div>
+                    </li>
+                    <li id="global_login" class="hd_has_child" style="" data-type="2017">
+                        <div class="hd_login">
+                            <span class="hd_hi">Hi,</span>
+                            <a href="" target="_blank" class="hd_login_name">1815*****77@phone</a>
+                            <i class="hd_iconfont"></i>
+                        </div>
+                        <div class="hd_user_privilege"><a href="javascript:bothSiteLogoutJsonp();" class="hd_login_out">退出登录</a>
+                            <div class="clearfix"><a href="" class="hd_avata_box"><img
+                                    src="//d9.yihaodianimg.com/N10/M00/2F/59/ChEi21iJ3ayAHRRxAACBZMCLZII10800.jpg"
+                                    alt=""></a>
+                                <div class="fl"><a href="" title="用户名" class="hd_login_name">1815*****77@phone</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hd_menu hd_notice" id="hdUserMsg" style="display: none" data-cfg="1">
+                            <a href="" rel="nofollow" target="_blank">我的消息&nbsp;(<em class="hd_has_num">0</em>)</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hd_menu">
+                            <a href="" target="_blank" rel="nofollow"><i
+                                    class="hd_iconfont"></i>我的订单</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- top_main -->
+    <div class="wrap hd_header hd_cm_global">
+        <div class="clearfix">
+            <div class="hd_logo_area">
+                <a href="" class="hd_logo"><img
+                        src="//d9.yihaodianimg.com/N10/M0A/DB/61/ChEi2lj4TqGAOjXwAAAbSq83IXA88700.png"
+                        alt="基础头部logo"></a>
+            </div>
+            <div class="hd_header_right">
+                <div class="clearfix">
+                    <div class="hd_head_search">
+                        <div class="hd_search_form" id="hdSearchForm">
+                            <div class="hd_fixed_wrap">
+                                <a href="" class="hd_fixed_logo"><img src="//d7.yihaodianimg.com/N09/M09/85/8D/ChEi11jziUSAOkn4AABJ2dwtrSw01400.jpg" alt="" width="205" height="70"></a>
+                                <div class="hd_search_wrap clearfix">
+                                    <label for="keyword" style="display:none;">办公室零食趴</label>
+                                    <input class="hd_search_ipt" name="keyword" id="keyword" type="text" value="" placeholder="办公室零食趴" original="办公室零食趴" url="//sale.yhd.com/act/u5tlWf4EQi1.html" style="color:#333333;" maxlength="100" autocomplete="off" x-webkit-speech="" onwebkitspeechchange="emptySearchBar();" x-webkit-grammar="builtin:translate">
+                                    <button type="button" class="hd_search_btn" onclick="javascript:searchMeForClick();"><i class="hd_iconfont"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="hotKeywordsShow" class="hd_hot_search" ><a title="电视柜茶几" target="_blank" href="">电视柜茶几</a>
+                           </p>
+                        <!--搜索推荐-->
+                    </div>
+                    <div class="hd_mini_cart" id="miniCart" data-version="1">
+                        <u class="hd_c_num none" id="in_cart_num"></u>
+                        <a class="hd_prism_cart" href="" data-ref="YHD_TOP_MINICART">
+                            <em class="hd_iconfont"></em>
+                            <span>购物车</span>
+                        </a>
+                        <div class="hd_cart_show none" id="showMiniCartDetail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top_nav -->
+    <div class="hd_cm_wrap">
+        <div class="wrap">
+            <div class="hd_cm_nav clearfix" id="headerNav">
+                <div class="hd_cm_allsort_wrap" id="allSortbox">
+                    <a href="javascript:;" class="hd_cm_tit">所有商品分类<em class="hd_iconfont"></em></a>
+                    <div class="mod_hd_allsort">
+                        <ul class="hd_allsort hd_more_allsort" id="j_allsort">
+                            <li data-tpa="YHD_GLOBAl_HEADER_CATEGORY_1" data-mrt="1" categoryid="1741" index="1">
+                                <h3 class="hd_gray_bg">
+                                    <i class="hd_iconfont hd_floor_color1"></i>
+                                    <a title="全球进口" href="http://channel.yhd.com/import.html" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1741_910"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1741.1">全球进口</a>
+                                </h3>
+                                <div class="hd_show_sort hd_allsort1 clearfix global_loading" data-tpc="1">
+                                </div>
+                            </li>
+                            <li data-tpa="YHD_GLOBAl_HEADER_CATEGORY_2" data-mrt="1" categoryid="1621" index="2">
+                                <h3 class="hd_gray_bg">
+                                    <i class="hd_iconfont hd_floor_color1"></i>
+                                    <a title="食品饮料" href="http://search.yhd.com/c1320-0-0" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_590"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.1">食品饮料</a> /
+                                    <a title="酒" href="http://search.yhd.com/c1585-0-0" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_591"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.2">酒</a> /
+                                    <a title="生鲜" href="http://search.yhd.com/c12218-0-0" target="_blank"
+                                       data-ref="CatMenu_Search_100000014_1621_592"
+                                       data-tc="0.0.TRACKER_CODE.CatMenu_Search_100000014_1621.3">生鲜</a>
+                                </h3>
+                                <div class="hd_show_sort hd_allsort1 clearfix global_loading" data-tpc="2">
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="hd_cm_nav_wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content start-->
+<div id="layout_main" class="mpc_cont">
+    <div class="wrap clearfix">
+        <!-- sideNav -->
+        <div class="mpc_cont_sideNav">
+            <dl>
+                <dt>
+                    <i class="my_iconfont sidenav_icon"></i>
+                    <span>我的交易</span>
+                </dt>
+                <dd>
+                    <a onclick="addTrackPositionToCookie('2','Myyhd_New_Left_Menu_Transaction')"
+                       href="" target="_blank">1号店订单</a>
+                </dd>
+            </dl>
+            <dl>
+                <dd>
+                    <a onclick="addTrackPositionToCookie('2','Myyhd_New_Left_Menu_Member_Ziliao')"
+                       href="" target="_blank">个人资料</a>
+                </dd>
+                <dd>
+                    <a onclick="addTrackPositionToCookie('2','Myyhd_New_Left_Menu_Member_Address')"
+                       href="" target="_blank">地址管理</a>
+                </dd>
+                <dd>
+                    <a onclick="addTrackPositionToCookie('2','Myyhd_New_Left_Menu_Member_Safe')"
+                       href="" target="_blank">安全设置</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <i class="my_iconfont sidenav_icon"></i>
+                    <span>我的评论</span>
+                </dt>
+                <dd>
+                    <a onclick="addTrackPositionToCookie('2','Myyhd_New_Left_Menu_Transaction_Common')"
+                       href="" target="_blank">评论商品</a>
+                </dd>
+            </dl>
+        </div>
+        <script type="text/javascript" src="//img.yihaodianimg.com/myyhd/member/js/jquery.min.js"></script>
+        <script type="text/javascript" src="//img.yihaodianimg.com/myyhd/member/index/js/leftmenu.js"></script>
+        <div class="mpc_cont_main">
+            <div class="columnright1">
+                <div class="pop_win" id="yhd_pop_win" style="display:none;"></div>
+                <div class="mod_vs_one__content">
+                    <div class="mod_person_edit person_info clearfix">
+                        <div class="mod_person_edit_top clearfix">
+                            <div class="mod_person_edit_left">
+                                <div class="header_img">
+                                    <label for="">头像：</label>
+                                    <a class="box_a">
+                                        <input type="hidden" name="userId" id="userId" value="255437419">
+                                        <p class="user_pic"><img src="http://d9.yihaodianimg.com/N10/M00/2F/59/ChEi21iJ3ayAHRRxAACBZMCLZII10800.jpg" width="78" height="78"></p>
+                                        <span class="opacity_box"></span>
+                                        <span class="real_box" style="cursor:pointer" onclick="showUploadPopbox();" data-tpa="MYYHD_PC_USERINFO_EDITPIC" href="javascript:void(0);">编辑头像</span>
+                                    </a>
+                                </div>
+                                <form method="post" name="editInfo" id="updateBaseInfoSubmit" action="/myinfo/updateBaseinfo.do">
+                                    <input type="hidden" name="myyhdUserToken" value="9feaec2d-da5d-4024-a671-0c4fae75a896">
+                                    <div class="header_img edit_name">
+                                        <label for="">昵称：</label>
+                                        <input type="text" name="userInfo.nick" class="input_txt nick_name" value="1815*****77@phone">
+                                        <p>
+                                            <span class="edit_name_warn" style="margin-left:90px;">昵称长度不能超过40个字符 </span>
+                                        </p>
+                                    </div>
+                                    <div class="header_img edit_name">
+                                        <label for=""><i>*</i>真实姓名：</label>
+                                        <input type="text" name="userInfo.userRealRealName" class="input_txt" value="" id="end_user_real_realname_1">
+                                    </div>
+                                    <div class="header_img edit_name">
+                                        <label for=""><i>*&nbsp;</i>性别：</label>
+                                        <input type="radio" class="gender_radio" name="userInfo.endUserSex" id="male" value="0"><span>男</span>
+                                        <input type="radio" class="gender_radio" name="userInfo.endUserSex" id="female" value="1"><span>女</span>
+                                    </div>
+                                </form></div>
+                        </div>
+                        <div class="header_img birth_box clearfix">
+                            <label class="birth" for=""><i>*&nbsp;</i>生日：</label>
+                            <div class="selected_box">
+                                <select name="birthYear" alt="" style="width:90px; height: 30px;"><option value="0" selected="selected">选择年</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option><option value="1918">1918</option><option value="1917">1917</option><option value="1916">1916</option><option value="1915">1915</option><option value="1914">1914</option><option value="1913">1913</option><option value="1912">1912</option><option value="1911">1911</option><option value="1910">1910</option><option value="1909">1909</option><option value="1908">1908</option></select>
+                            </div>
+                            <span class="year">年</span>
+                            <div class="selected_box">
+                                <select name="birthMonth" alt="" style="width:90px; height: 30px;"><option value="0" selected="selected">选择月</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+                            </div>
+                            <span class="year">月</span>
+                            <div class="selected_box">
+                                <select name="birthDate" alt="" style="width:90px; height: 30px;"><option value="0" selected="selected">选择日</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+                            </div>
+                            <span class="year">日</span>
+                            <div class="cell_tip_msg7">
+                                <div class="tip_msg">
+                                    <i class="icon_jiao"></i>
+                                    <i class="icon_biao"></i>
+                                    <span>生日一旦确认不可修改哦~</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input class="sure_save" style="cursor:pointer" data-tpa="MYYHD_PC_USERINFO_SURE" type="button" id="btnSubmit" value="确认保存">
+                    </div>
+                </div>
+            </div>
+            <!--编辑头像弹出层 begin-->
+            <div class="pop_box edit_picture hide" id="popbox_editpic" style="display: none; top:250px">
+                <div class="pop_tit"><a class="close fr" onclick="cancelUpload();">关闭</a>修改头像</div>
+                <p class="select_way"><a href="###" class="cur_edit" id="user_pic_sel" onclick="changePicType(this);">自定义头像</a>|<a href="###" id="sys_pic_sel" onclick="changePicType(this);">系统头像</a></p>
+                <!--自定义头像 begin-->
+
+                <div class="pic_editbox clearfix" id="user_pic_box">
+                    <div id="flashPlayInstallEditinfoCheck"><span style="color:red;">&nbsp;&nbsp;您需要安装并启用最新的Adobe flash，才可以上传图片</span>  <a style="color:blue;" target="_blank" href="http://www.adobe.com/go/getflashplayer">下载</a></div>
+                    <p><span id="packaging"><object id="SWFUpload_0" type="application/x-shockwave-flash" data="//img.yihaodianimg.com/myyhd/member/swf/swfupload.swf?preventswfcaching=1508136878613" width="60" height="24" class="swfupload"><param name="wmode" value="window"><param name="movie" value="//img.yihaodianimg.com/myyhd/member/swf/swfupload.swf?preventswfcaching=1508136878613"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2Fmyinfo%2FuploadPic.do&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=0&amp;params=ut%3Dut%26amp%3BendUserId%3D255437419%26amp%3Bwidth%3D238%26amp%3Bheight%3D238&amp;filePostName=file&amp;fileTypes=*.jpg%3B*.png%3B*.jpeg&amp;fileTypesDescription=Image%20Files&amp;fileSizeLimit=5120&amp;fileUploadLimit=0&amp;fileQueueLimit=0&amp;debugEnabled=false&amp;buttonImageURL=%2F%2Fimg.yihaodianimg.com%2Fmyyhd%2Fmember%2Fimages%2Fswf.jpg&amp;buttonWidth=60&amp;buttonHeight=24&amp;buttonText=%3Cspan%20class%3D'btn-txt'%3E%E9%80%89%E6%8B%A9%E5%9B%BE%E7%89%87%3C%2Fspan%3E&amp;buttonTextTopPadding=3&amp;buttonTextLeftPadding=3&amp;buttonTextStyle=.btn-txt%7Bcolor%3A%23ffffff%3Bmargin-right%3A%2010px%3Bvertical-align%3A%20middle%3Bfont-weight%3Abold%7D&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object></span> <span class="gray9">仅支持JPG、JPEG、PNG图片文件，且文件小于1M，建议使用正方形图片</span>
+                    </p>
+                    <div class="customavatar">
+                        <div id="temp">
+                            <div id="upload_pic">
+                                <img src="" width="238" height="238">
+                            </div>
+                        </div>
+                        <!--正在上传提示-->
+                        <div id="upload_progresse" div-css="10" style="position: absolute;display:none;float: left;">
+                            <div id="upload_progress_bge" style="background: #8BABCE; height: 20px; float:left;"></div>
+                        </div>
+                        <div class="hide" id="fsUploadProgress" style="display:none;">
+                            <img src="/statics/member/css/images/myinfo/loading.gif"><span class="gray9">正在上传图片，请稍等...</span>
+                        </div>
+                        <!--正在上传提示 -->
+                    </div>
+                    <dl class="preview clearfix">
+                        <dt>您上传的头像会自动生成4种尺寸，请注意中小尺寸的头像是否清晰：</dt>
+                        <dd class="picbox1">
+                            <span id="size1"><img src="" width="238" height="238"></span>
+                            <p>150x150像素</p>
+                            <span id="size2"><img src="" width="238" height="238"></span>
+                            <p>50x50像素</p>
+                        </dd>
+                        <dd class="picbox2">
+                            <span id="size3"><img src="" width="238" height="238"></span>
+                            <p>80x80像素</p>
+                            <span id="size4"><img src="" width="238" height="238"></span>
+                            <p>30x30像素</p>
+                        </dd>
+                    </dl>
+                </div>
+
+                <!--自定义头像 end-->
+                <!--系统头像 begin-->
+                <div class="pic_editbox clearfix hide" id="sys_pic_box">
+                    <dl class="select_pic clearfix">
+                        <dt>请选择：</dt>
+                        <dd class="cur"><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                        <dd><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                        <dd><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                        <dd><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                        <dd><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                        <dd><img src="" onclick="selectSysPic(this);" width="80" height="80"></dd>
+                    </dl>
+                    <dl class="preview clearfix">
+                        <dt>预览：</dt>
+                        <dd class="picbox1">
+                            <img src="" width="150" height="150" class="size1">
+                            <p>150x150像素</p>
+                            <img src="" width="50" height="50" class="size3">
+                            <p>50x50像素</p>
+                        </dd>
+                        <dd class="picbox2">
+                            <img src="" width="80" height="80" class="size2">
+                            <p>80x80像素</p>
+                            <img src="" width="30" height="30" class="size4">
+                            <p>30x30像素</p>
+                        </dd>
+                    </dl>
+                </div>
+                <!--系统头像 end-->
+                <p class="tc">
+                    <button class="save_btn" id="save_pic" onclick="saveUpload();">保存</button>
+                    <button class="cancel_btn" onclick="cancelUpload();">取消</button>
+                </p>
+            </div>
+            <!--编辑头像弹出层 end-->
+            <div class="error_info_show none hide">
+                <p id="err_popwin">.........</p>
+                <p class="pop_btn_box">
+                    <button onclick="yhdLib.popclose();">确定</button>
+                </p>
+            </div>
+            <!--温馨提示 begin-->
+            <div class="pop_box prompt hide" id="prompt" style="display: none;">
+                <div class="pop_tit"><a class="close fr" onclick="closePromptPopbox();">关闭</a>修改头像</div>
+                <p class="img_succeed">图片上传成功！</p>
+                <div class="prompt_detail">稍后我们将对您的图片进行审核，审核通过后，您的图片将被公开，如审核未通过，我们会尽快通知您。</div>
+                <p class="tc">
+                    <button class="save_btn" onclick="closePromptPopbox();">确定</button>
+                </p>
+            </div>
+            <!-- 修改提示弹出层-->
+            <div id="popwin_modifyTip" class="none">
+                <div id="Tc_giftcard2" class="jqmID1">
+                    <div class="popbox">
+                        <div class="popc">
+                            <div class="pop_tit"><a class="close fr" href="###" onclick="closeDiv();">关闭</a>提示</div>
+                            <div class="recharge_msg">
+                                <strong>修改提示！</strong>
+                                <h4 id="error_popwin">您的个人信息修改成功！</h4>
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+<div class="ft_wrap">
+    <div id="globalBottomBrowseRelated" data-recordtracker="1"></div>
+    <div class="wrap ft_footer_service clearfix" id="footerIcon" data-tpa="YHD_GLOBAl_FOOTERICON">
+        <a target="_blank">
+            <img alt="" src="//d8.yihaodianimg.com/N05/M0B/39/F3/CgQI0lWskgmADBnsAAAPZvcSh3E68900.jpg">
+            <b>正品保障</b>
+            <span>正品行货 放心选购</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d6.yihaodianimg.com/N05/M09/96/23/ChEbulWsk4iADa_aAAAM544hHN818600.jpg">
+            <b>满86包邮</b>
+            <span>满86元 免运费</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d9.yihaodianimg.com/N07/M00/2D/8B/CgQIz1WslI-Adao3AAAN5b_ut2I80100.jpg">
+            <b>售后无忧</b>
+            <span>7天无理由退货</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="//d8.yihaodianimg.com/N09/M06/08/C8/ChEi11WsyiyALBbiAAAN9lEEK5M33200.jpg">
+            <b>准时送达</b>
+            <span>收货时间由你做主</span>
+        </a>
+    </div>
+    <div class="wrap ft_service_link clearfix">
+        <div id="bottomHelpLinkId" class="ft_help_list clearfix" data-tpa="YHD_GLOBAl_FOOTER_HELP">
+            <dl>
+                <dt>新手入门</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=12" target="_blank">购物流程</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=17" target="_blank">会员制度</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=38" target="_blank">订单查询</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=36" target="_blank">发票制度</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=25" target="_blank">货到付款</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=26" target="_blank">网上支付</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=27" target="_blank">银行转账</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=28" target="_blank">礼品卡支付</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=29" target="_blank">其它支付</a></dd>
+            </dl>
+            <dl>
+                <dt>配送服务</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=21" target="_blank">配送进度查询</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=20" target="_blank">商品验货与签收</a></dd>
+            </dl>
+            <dl>
+                <dt>售后保障</dt>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=31" target="_blank">退换货政策</a></dd>
+                <dd><a href="//cms.yhd.com/cms/view.do?topicId=43" target="_blank">联系客服</a></dd>
+            </dl>
+        </div>
+        <!--footer 二维码 begin -->
+        <div class="ft_code_wrap clearfix" data-tpa="YHD_GLOBAl_HEADER_MOBILE" id="footerQRcode">
+            <div class="ft_mobile_code clearfix">
+                <p>APP更优惠</p>
+                <img src="//img.yihaodianimg.com/front-homepage/index/images/qryhd.png?1=1" alt="APP更优惠二维码">
+            </div>
+            <div class="ft_mobile_code clearfix">
+                <p>加微信查订单</p>
+                <img src="//d6.yihaodianimg.com/N10/M01/EC/6D/ChEi3Fj518KAFF5SAABtGRNmQM062100.jpg" alt="加微信查订单二维码">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p class="ft_footer_link">
+        </p>
+        <p class="ft_footer_link">
+            <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备16050468号</a>
+            |
+            <a href="//cms.yhd.com/cms/view.do?topicId=16" target="_blank">经营证照</a>
+            |
+            <a href="//d9.yihaodianimg.com/N10/M05/00/A9/ChEi2lkQGRaAfaeeAAIhVwT2TYo18400.jpg" target="_blank">互联网药品信息服务资格证</a>
+            |
+            <a target="_blank">违法和不良信息举报电话：0514-85899118</a>
+            |
+            <a href="//d9.yihaodianimg.com/N11/M04/76/1C/ChEwoVnfFfeAfzKUAAg9urXNqaA12000.jpg" target="_blank">沪B2-20170039</a>
+        </p>
+        <p>Copyright© 1号店网上超市 2007-2017，All Rights Reserved</p>
+        <small id="footerbanner2LazyLoad" class="ft_pic_link">
+            <a href="https://online.unionpay.com/" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N00/M01/1A/30/CgMBmVDzwyaAaIMBAAAJZgSEr6I65200.jpg">
+            </a>
+            <a href="http://www.gsxt.gov.cn/index.html" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N01/M08/19/94/CgQCrlDzwnKAUkfSAAAIPrrML6M92400.jpg">
+            </a>
+            <a href="http://www.zx110.org/" target="_blank">
+                <img alt="" src="//d8.yihaodianimg.com/N02/M05/19/94/CgQCsVDzw0GABUElAADHlvRfNUk94600.jpg">
+            </a>
+            <a href="http://net.china.com.cn/index.htm" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N01/M0A/95/FD/CgQCr1PQy1CAF7vaAABDexsiEYM24800.jpg">
+            </a>
+            <a href="http://shwg.dianping.com/index.html" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N08/M06/6C/9C/ChEi1VcfPl2AC1T8AAANFrEfJlw97300.jpg">
+            </a>
+            <a href="http://www.shjbzx.cn" target="_blank">
+                <img alt="" src="//d6.yihaodianimg.com/N10/M09/0E/1F/ChEi2lh171KAJrGlAAALl_uZt0E75600.jpg">
+            </a>
+            <a href="https://search.szfw.org/cert/l/CX20150608010268010812" target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N08/M01/C7/7E/ChEi1FYXHcOAVk_WAAAL2r2-yfo10200.jpg">
+            </a>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&amp;ct=df&amp;a=1&amp;pa=500267"
+               target="_blank">
+                <img alt="" src="//d9.yihaodianimg.com/N01/M03/A0/40/CgQCrlPYTqCASlHXAAAd82JE0eA31000.png">
+            </a>
+        </small>
+    </div>
+</div>
+<!--js start-->
+<!--无页面级头部js时, 全局头部js下移-->
+<script type="text/javascript" src="//img.yihaodianimg.com/myyhd/global/js/global_base_top.js?0"
+        charset="utf-8"></script>
+<script type="text/javascript" src="//img.yihaodianimg.com/myyhd/member/js/order_list.js?0" charset="utf-8"></script>
+<script type="text/javascript" src="//st.360buyimg.com/sso/synccookie.js?0" charset="utf-8"></script>
+
+<iframe id="globalLocalStorageAdaptorForGet" style="display:none"
+        src="http://www.yhd.com/html/getLocalStorage.html?v=20171013" loaded="1"></iframe>
+</body>
+</html>
