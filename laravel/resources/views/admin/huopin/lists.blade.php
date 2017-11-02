@@ -21,7 +21,7 @@
                 @foreach($huopins as $v)
                 <tr>
                     <td>{{$v['id']}}</td>
-                    <td>{{$v['zuhe']}}</td>
+                    <td>{{$v['shuxing']}}</td>
                     <td>{{$v['kucun']}}</td>
                     <td>{{$v['gid']}}</td>
                     <td>

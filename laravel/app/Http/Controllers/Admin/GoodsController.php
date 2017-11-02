@@ -6,6 +6,7 @@ use App\Http\Requests\GoodsRequest;
 use App\Model\Attr;
 use App\Model\Category;
 use App\Model\Goods;
+use houdunwang\arr\Arr;
 use Request;
 use App\Http\Controllers\Controller;
 
@@ -22,8 +23,11 @@ class GoodsController extends CommonController
     //展示添加商品页面
     public function create(Goods $goods)
     {
-        //获得所最低级分类数据
-        $facategory = $goods->getCategory();
+        $attr = new Attr();
+        //获得最底层的分类id数组
+        $threeCategory = $attr->threeCategory();
+        //获得所有三级分类的数据
+        $facategory = Category::whereIn('id',$threeCategory)->get();
         return view("admin.goods.create",compact("categorys","facategory"));
     }
 
@@ -31,7 +35,12 @@ class GoodsController extends CommonController
     public function store(GoodsRequest $request)
     {
         $data = Request::all();
-        $data['attribute_id'] = implode(',',$data['attribute_id']);
+//        dd($data);
+        if (isset($data['attribute_id'])){
+            $data['attribute_id'] = implode(',',$data['attribute_id']);
+        }else{
+            $data['attribute_id'] = "";
+        }
         Goods::create($data);
 //        flash("添加成功")->overlay();
         return redirect("/admin/goods");
@@ -41,9 +50,11 @@ class GoodsController extends CommonController
 //    展示编辑页面
     public function edit($id)
     {
-        //获得所最低级分类数据
-        $goods =new Goods();
-        $facategory = $goods->getCategory();
+        $attr = new Attr();
+        //获得最底层的分类id数组
+        $threeCategory = $attr->threeCategory();
+        //获得所有三级分类的数据
+        $facategory = Category::whereIn('id',$threeCategory)->get();
         //获得对应序号的数据
         $model = Goods::find($id);
         return view("admin.goods.edit",compact("facategory","model"));
@@ -57,7 +68,7 @@ class GoodsController extends CommonController
         $model->category_id =Request::input("category_id");
         $model->gname =Request::input("gname");
         $model->price =Request::input("price");
-        $model->numlook =Request::input("numlook");
+        $model->numLook =Request::input("numLook");
         $model->listImages =Request::input("listImages");
         $model->photos =Request::input("photos");
         $model->details =Request::input("details");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\AttrRequest;
 use App\Model\Attr;
 use App\Model\Category;
+use houdunwang\arr\Arr;
 use Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +19,8 @@ class AttrController extends CommonController
     public function index()
     {
         //获得所有商品属性数据
-        $attrs = Attr::get();
+        $data = Attr::get()->toarray();
+        $attrs  =Arr::tree($data, "aname", 'id',  'pid');
         return view("admin.attrs.lists",compact("attrs"));
     }
 

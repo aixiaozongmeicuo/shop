@@ -32,6 +32,12 @@
                         <input type="hidden" name="gid" value="{{$gid}}">
                     </div>
                 </div>
+                {{--<div class="form-group">--}}
+                    {{--<label class="col-sm-2 control-label">货品价格:</label>--}}
+                    {{--<div class="col-sm-10">--}}
+                        {{--<input type="text" name="huopinprice" class="form-control" value="">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">提交</button>

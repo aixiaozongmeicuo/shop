@@ -25,6 +25,12 @@
                     <input type="text" name="cname" class="form-control" value="{{$model['cname']}}">
                 </div>
             </div>
+            <div class="form-group" id="module">
+                <label for="" class="col-sm-2 control-label">所属模块:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="module" class="form-control" value="{{$model['module']}}">
+                </div>
+            </div>
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">分类描述:</label>
                 <div class="col-sm-10">
@@ -80,5 +86,11 @@
         </form>
     </div>
 </div>
-
+<script>
+//    $(function () {
+//        if (){
+//
+//        }
+//    })
+</script>
 @endsection

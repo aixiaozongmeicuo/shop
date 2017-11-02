@@ -44,4 +44,7 @@ Route::any("/admin/huopin/update/{id}","Admin\\HuopinController@update");
 //删除对应序号的货品数据路由
 Route::get("/admin/huopin/delete/{id}","Admin\\HuopinController@delete");
 
+//后台展示订单列表
+Route::get("/admin/myorderlists","Admin\\MyorderlistsController@lists");
+
 

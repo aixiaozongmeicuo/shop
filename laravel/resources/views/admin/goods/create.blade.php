@@ -2,8 +2,8 @@
 @section('content')
 <div class="panel panel-default">
     <ul class="nav nav-tabs" role="tablist">
-        <li><a href="/admin/goods">分类列表</a></li>
-        <li class="active"><a href="javacript:;">添加分类</a></li>
+        <li><a href="/admin/goods">商品列表</a></li>
+        <li class="active"><a href="javacript:;">添加商品</a></li>
     </ul>
     <div class="panel-body">
         <form action="/admin/goods" method="post" class="form-horizontal" role="form">

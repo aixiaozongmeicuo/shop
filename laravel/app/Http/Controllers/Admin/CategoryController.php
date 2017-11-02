@@ -48,7 +48,7 @@ class CategoryController extends CommonController
         $data = Request::all();
         //保存数据
         Category::create($data);
-        flash('添加成功')->overlay();
+//        flash('添加成功')->overlay();
         return redirect("/admin/category");
     }
 
@@ -106,6 +106,7 @@ class CategoryController extends CommonController
         $model->pid =Request::input("pid");
         $model->thumb =Request::input("thumb");
         $model->description =Request::input("description");
+        $model->module =Request::input("module");
         $model->save();
         flash('修改成功')->overlay();
         return redirect("/admin/category");

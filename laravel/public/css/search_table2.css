@@ -1,8 +1,8 @@
 /* SVN.committedRevision=1839333 */
 @font-face {
     font-family: "iconSearch";
-    src: url('../iconfont/search.eot');
-    src: url('../iconfont/search.eot?#iefix') format('embedded-opentype'),url('../iconfont/search.woff') format('woff'),url('../iconfont/search.ttf') format('truetype'),url('../iconfont/search.svg#search') format('svg');
+    src: url('/iconfont/search.eot');
+    src: url('/iconfont/search.eot?#iefix') format('embedded-opentype'),url('/iconfont/search.woff') format('woff'),url('/iconfont/search.ttf') format('truetype'),url('/iconfont/search.svg#search') format('svg');
 }
 
 .iconSearch {
@@ -22,8 +22,8 @@
 }
 
 .fixe_right a,.choice_later .car_model_box u,.mod_search_select .dealers_b .txt .ico,.mod_search_select .dealers_b .ico,.mod_search_select .dealers_b .txt.cur .ico,.mod_search_select .more_b a.tag u,.mod_search_select .more_b a.tag.cur u,.tag_video,.cell_attention span,.shopping_act .contrast,.mod_search_list .search_item .owner s,.mod_similar_products .owner s,.mod_search_list .title .rx,.mod_search_list .title .otc,.otc2,.otc3,.mod_search_list .pricebox .sxj,.mod_search_list .no_tax,.item_act .shopping_num input,.item_act .shopping_num a,.mod_search_list .search_item .owner .hs,.bought,.mod_search_list .item_status span,.tuangou_icon,.shangou_icon,.baoyou_icon,.qianggou_icon,#cell_feedback .options .checkbox,.mod_search_sidlist .sidlist_slide a sup,.mod_search_select .sort_b a.pe i,.ico_search_list,.mod_search_pro .item_promotion_text i,.mod_search_collect.defult,.mod_search_collect.yet,.mod_search_guide .guide_con a u,.mod_search_guide .multiple_con_box a u,.mod_search_guide .guide_main .guide_con li a .hot,.mod_search_guide .g_brandPic .guide_con li.cur .br .cl,#guide_color .guide_con li.cur i,.mod_compareResults .selectBtn .ico,#guide_color .guide_con li.other_color a span,.mod_search_pro .storeName .ico,.mod_premiuo .spiny_btn,.mod_store_list .l_describe li .compare,.series_pro_buy .series_pro_con a i,.series_pro_buy .series_pro_con span i,.mod_search_list .item_promotion_text i,.mod_compare_bar .compareList .itemList li .empty,.mod_search_guide .classWrap .guide_main .arrow,.mod_search_pro .proImg .recommended_ico,.lightChannelList .list-more .ico,.m-channel-bar .enter i,.m-channel-bar .toTop i,.m-channel-bar .bottom,.mod_compare_bar .compareBtn.cur .btn_empty,.mod-search-cehot .hot-box .icon-tag,.mod_search_pro .storeName .hs,.mod_search_guide .select_property .son_m .s_b .sub,.rank_ico,.cham_ico,.mod_search_pro .rx,.mod_search_ydt .enter_ico,.mod_search_select .merge_chk a .ico,.mod_search_pro .proName .db,.mod_search_list .search_item .db,.mod_all_themes .all_themes_title i,.search_pro_more .sp3,.mod_search_select .sort_b .pe i,.mod_search_select_new .hasP .isP i,.mod_search_select_new ul li.txt i,.mod_search_select_new ul li.tag u,.mod_search_guide .new_brand .guide_main .guide_list li .br span.cl,.mod_search_guide .new_brand .guide_main .guide_selected .sel_item i,.less_content .s_btn i,.mod_search_store .rNameBox .name .ico {
-    background: url(../images/searchSprite_png24.png?1839333) 0 0 no-repeat;
-    _background: url(../images/searchSprite_png8.png?1839333) 0 0 no-repeat;
+    background: url(/images/searchSprite_png24.png) 0 0 no-repeat;
+    _background: url(/images/searchSprite_png8.png) 0 0 no-repeat;
 }
 
 a {

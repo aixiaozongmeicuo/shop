@@ -184,7 +184,7 @@
 }
 
 .mod_hd_allsort .hd_allsort li h3 {
-    height: 30px;
+    height: 55px;
     overflow: hidden;
     padding: 0 10px 0 0;
     color: #fff;
@@ -366,7 +366,7 @@
 }
 
 .mod_hd_allsort .global_loading {
-    background: #FFF url(../images/loading-yhdUpdate_01.gif?db48102) no-repeat center center
+    background: #FFF url(/images/loading-yhdUpdate_01.gif?db48102) no-repeat center center
 }
 
 .mod_hd_allsort .hd_good_category {
@@ -492,7 +492,7 @@
     overflow: hidden;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background: url("../images/globalhead_sprite.png?db48102") no-repeat 0 -150px
+    background: url("/images/globalhead_sprite.png?db48102") no-repeat 0 -150px
 }
 
 .mod_personal_center .avata_pic_wrap img {
@@ -547,7 +547,7 @@
     width: 12px;
     height: 12px;
     margin-right: 5px;
-    background: url("../images/globalhead_sprite.png?db48102") no-repeat -385px -70px
+    background: url("/images/globalhead_sprite.png?db48102") no-repeat -385px -70px
 }
 
 .mod_personal_center .unlogin_box {
@@ -691,7 +691,7 @@
     top: 9px;
     width: 39px;
     height: 19px;
-    background: url(../images/globalhead_sprite.png?db48102) no-repeat -260px -110px
+    background: url(/images/globalhead_sprite.png?db48102) no-repeat -260px -110px
 }
 
 .mod_personal_center .vip_list .jfsc em {
@@ -725,7 +725,7 @@
 }
 
 .vip1_center {
-    background-image: url("../images/vip_bg1.png?db48102");
+    background-image: url("/images/vip_bg1.png?db48102");
     background-repeat: no-repeat
 }
 
@@ -775,7 +775,7 @@
 }
 
 .vip3_center {
-    background-image: url("../images/vip_bg3.png?db48102");
+    background-image: url("/images/vip_bg3.png?db48102");
     background-repeat: no-repeat
 }
 
@@ -800,7 +800,7 @@
 }
 
 .vip4_center {
-    background-image: url("../images/vip_bg2.png?db48102");
+    background-image: url("/images/vip_bg2.png?db48102");
     background-repeat: no-repeat
 }
 
@@ -826,7 +826,7 @@
 }
 
 .vip5_center {
-    background-image: url("../images/vip_bg4.png?db48102");
+    background-image: url("/images/vip_bg4.png?db48102");
     background-repeat: no-repeat
 }
 
@@ -852,7 +852,7 @@
 }
 
 .vip6_center {
-    background-image: url("../images/vip_bg3.png?db48102");
+    background-image: url("/images/vip_bg3.png?db48102");
     background-repeat: no-repeat
 }
 
@@ -1126,7 +1126,7 @@ body {
     height: 28px;
     padding: 5px 2px 4px 3px;
     overflow: hidden;
-    background: url("../images/globalhead_sprite.png?db48102") no-repeat -160px -150px;
+    background: url("/images/globalhead_sprite.png?db48102") no-repeat -160px -150px;
     line-height: 14px;
     text-align: center;
     color: #fff
@@ -1529,7 +1529,7 @@ body {
     float: left;
     width: 484px;
     height: 400px;
-    background: #fff url("../images/group_bg.png?db48102") no-repeat center top
+    background: #fff url("/images/group_bg.png?db48102") no-repeat center top
 }
 
 .mod_brand_sale .group_buy h4 {
@@ -1663,7 +1663,7 @@ body {
     float: right;
     width: 453px;
     height: 400px;
-    background: #fff url("../images/group_bg.png?db48102") no-repeat center top
+    background: #fff url("/images/group_bg.png?db48102") no-repeat center top
 }
 
 .mod_brand_sale .area_rank h4 {
@@ -1821,19 +1821,19 @@ body {
 }
 
 .mod_brand_sale .rank_content li a .no_1 {
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -60px 0
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -60px 0
 }
 
 .mod_brand_sale .rank_content li a .no_2 {
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -90px 0
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -90px 0
 }
 
 .mod_brand_sale .rank_content li a .no_3 {
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -120px 0
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -120px 0
 }
 
 .mod_brand_sale .rank_content li a .no_gray {
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -150px 0
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -150px 0
 }
 
 .mod_brand_sale .rank_content li img {
@@ -1906,7 +1906,7 @@ body {
     float: left;
     width: 18px;
     height: 106px;
-    background: url(../images/indexbody_sprite.png?db48102) no-repeat 0 0
+    background: url(/images/indexbody_sprite.png?db48102) no-repeat 0 0
 }
 
 .mod_coupon .coupon_list {
@@ -1928,7 +1928,7 @@ body {
     width: 179px;
     height: 106px;
     padding: 0 5px;
-    background: #fff url("../images/dotbg_repeat.png?db48102") repeat 55px 1px;
+    background: #fff url("/images/dotbg_repeat.png?db48102") repeat 55px 1px;
     -webkit-box-shadow: 1px 0px 2px #ccc;
     -moz-box-shadow: 1px 0px 2px #ccc;
     box-shadow: 1px 0px 2px #ccc;
@@ -1988,7 +1988,7 @@ body {
     float: left;
     width: 18px;
     height: 106px;
-    background: url(../images/indexbody_sprite.png?db48102) no-repeat -30px 0
+    background: url(/images/indexbody_sprite.png?db48102) no-repeat -30px 0
 }
 
 .mod_coupon .coupon_list .more_coupon {
@@ -2007,7 +2007,7 @@ body {
     overflow: hidden;
     padding-top: 30px;
     padding-left: 10px;
-    background: url("../images/indexbody_sprite.png?db48102") repeat -250px 0;
+    background: url("/images/indexbody_sprite.png?db48102") repeat -250px 0;
     text-align: left;
     line-height: 14px;
     color: #ccc
@@ -2152,7 +2152,7 @@ body {
     float: left;
     width: 484px;
     height: 400px;
-    background: #fff url("../images/group_bg.png?db48102") no-repeat center top
+    background: #fff url("/images/group_bg.png?db48102") no-repeat center top
 }
 
 .mod_on_new .brand_buy h4 {
@@ -2186,7 +2186,7 @@ body {
     float: right;
     width: 453px;
     height: 400px;
-    background: #fff url("../images/group_bg.png?db48102") no-repeat center top
+    background: #fff url("/images/group_bg.png?db48102") no-repeat center top
 }
 
 .mod_on_new .life_pie h4 {
@@ -2885,7 +2885,7 @@ body {
 .mod_index_floor .left_con h4 a {
     display: inline-block;
     padding: 0 10px 10px 15px;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
     line-height: 20px
 }
@@ -3952,7 +3952,7 @@ body {
     display: inline-block;
     width: 27px;
     height: 18px;
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -180px 0;
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -180px 0;
     vertical-align: middle
 }
 
@@ -3960,7 +3960,7 @@ body {
     display: inline-block;
     width: 27px;
     height: 18px;
-    background: url("../images/indexbody_sprite.png?db48102") no-repeat -220px 0;
+    background: url("/images/indexbody_sprite.png?db48102") no-repeat -220px 0;
     vertical-align: middle
 }
 
@@ -4108,7 +4108,7 @@ body {
     _bottom: 370px;
     width: 100%;
     height: 80px;
-    background: #f5f5f5 url(../images/loading-yhdUpdate_01.gif?db48102) no-repeat center center
+    background: #f5f5f5 url(/images/loading-yhdUpdate_01.gif?db48102) no-repeat center center
 }
 
 .mod_you_like .you_like_list .loading_status {
@@ -4294,7 +4294,7 @@ body {
 }
 
 .w980 .mod_columns_wrap .pro_con {
-    width: 139px
+    width: 372px
 }
 
 .w980 .mod_columns_wrap .pro_wrap img {
@@ -4579,7 +4579,7 @@ body {
     width: 16px;
     height: 16px;
     margin-right: 10px;
-    background: url(../images/ie_upgrade.png?db48102) no-repeat
+    background: url(/images/ie_upgrade.png?db48102) no-repeat
 }
 
 .ie6_upgrade_text {
@@ -4600,11 +4600,11 @@ body {
 }
 
 .ie6_upgrade_ie {
-    background: url(../images/ie_upgrade.png?db48102) 0 -20px no-repeat
+    background: url(/images/ie_upgrade.png?db48102) 0 -20px no-repeat
 }
 
 .ie6_upgrade_360 {
-    background: url(../images/ie_upgrade.png?db48102) 0 -40px no-repeat
+    background: url(/images/ie_upgrade.png?db48102) 0 -40px no-repeat
 }
 
 .ie6_upgrade_close {
@@ -4615,7 +4615,7 @@ body {
     height: 20px;
     line-height: 100px;
     overflow: hidden;
-    background: url(../images/ie_upgrade.png?db48102) 5px -60px no-repeat
+    background: url(/images/ie_upgrade.png?db48102) 5px -60px no-repeat
 }
 
 .ie6_upgrade_close:hover {

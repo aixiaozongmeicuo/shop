@@ -127,19 +127,19 @@
                     </li>
                 </ul>
                 <div class="panel-heading">
-                    <h4 class="panel-title">轮播图管理</h4>
+                    <h4 class="panel-title">订单管理</h4>
                     <a class="panel-collapse" data-toggle="collapse" href="javascript:;">
                         <i class="fa fa-chevron-circle-down"></i>
                     </a>
                 </div>
                 <ul class="list-group menus">
                     <li class="list-group-item" id="39">
-                        <a href="/admin/slide">轮播图列表 </a>
+                        <a href="/admin/myorderlists">订单列表 </a>
                     </li>
-                    <li class="list-group-item" id="40">
-                        <a href="/admin/slide/create">
-                            添加轮播图 </a>
-                    </li>
+                    {{--<li class="list-group-item" id="40">--}}
+                        {{--<a href="/admin/slide/create">--}}
+                            {{--添加轮播图 </a>--}}
+                    {{--</li>--}}
                 </ul>
                 <!----------返回模块列表 start------------>
                 <!--模块列表-->

@@ -20,7 +20,7 @@
                 @foreach($attrs as $v)
                 <tr>
                     <td>{{$v['id']}}</td>
-                    <td>{{$v['aname']}}</td>
+                    <td>{{$v['_aname']}}</td>
                     <td>{{$v['pid']}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
